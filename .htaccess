@@ -1,4 +1,0 @@
-PassengerNodejs /usr/bin/node
-PassengerAppType node
-PassengerStartupFile app.js
-PassengerAppRoot /var/www/vhosts/yourdomain.com/httpdocs
