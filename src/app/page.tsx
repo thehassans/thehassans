@@ -1,10 +1,10 @@
 'use client';
 
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
+import ThemedNavbar from "@/components/ThemedNavbar";
+import ThemedHero from "@/components/ThemedHero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
+import ThemedProjects from "@/components/ThemedProjects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { DynamicThemeStyles } from "@/components/DynamicTheme";
@@ -19,11 +19,11 @@ export default function Home() {
       style={{ backgroundColor: currentTheme.colors.background }}
     >
       <DynamicThemeStyles />
-      <Navbar />
-      <Hero />
+      <ThemedNavbar />
+      <ThemedHero />
       <About />
       <Skills />
-      <Projects />
+      <ThemedProjects />
       <Contact />
       <Footer />
     </main>

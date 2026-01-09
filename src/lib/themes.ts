@@ -15,6 +15,16 @@ export interface Theme {
     gradient: string;
   };
   style: 'minimal' | 'bold' | 'elegant' | 'playful' | 'corporate';
+  design: {
+    heroLayout: 'centered' | 'split' | 'asymmetric' | 'fullscreen' | 'minimal';
+    cardStyle: 'flat' | 'elevated' | 'bordered' | 'glass' | 'gradient';
+    buttonStyle: 'solid' | 'outline' | 'ghost' | 'gradient' | 'pill';
+    navStyle: 'fixed' | 'floating' | 'minimal' | 'transparent' | 'solid';
+    animation: 'subtle' | 'dynamic' | 'none' | 'playful' | 'elegant';
+    borderRadius: 'none' | 'small' | 'medium' | 'large' | 'full';
+    spacing: 'compact' | 'normal' | 'relaxed';
+    fontStyle: 'modern' | 'classic' | 'bold' | 'minimal' | 'playful';
+  };
 }
 
 export const themes: Theme[] = [
@@ -35,6 +45,16 @@ export const themes: Theme[] = [
       gradient: 'from-amber-400 via-yellow-300 to-amber-500',
     },
     style: 'elegant',
+    design: {
+      heroLayout: 'centered',
+      cardStyle: 'elevated',
+      buttonStyle: 'gradient',
+      navStyle: 'floating',
+      animation: 'elegant',
+      borderRadius: 'medium',
+      spacing: 'relaxed',
+      fontStyle: 'classic',
+    },
   },
   {
     id: 'ocean-blue',
@@ -53,6 +73,16 @@ export const themes: Theme[] = [
       gradient: 'from-blue-400 via-cyan-300 to-blue-500',
     },
     style: 'corporate',
+    design: {
+      heroLayout: 'split',
+      cardStyle: 'bordered',
+      buttonStyle: 'solid',
+      navStyle: 'fixed',
+      animation: 'subtle',
+      borderRadius: 'small',
+      spacing: 'normal',
+      fontStyle: 'modern',
+    },
   },
   {
     id: 'emerald-forest',
@@ -71,6 +101,16 @@ export const themes: Theme[] = [
       gradient: 'from-emerald-400 via-green-300 to-emerald-500',
     },
     style: 'minimal',
+    design: {
+      heroLayout: 'minimal',
+      cardStyle: 'flat',
+      buttonStyle: 'ghost',
+      navStyle: 'minimal',
+      animation: 'none',
+      borderRadius: 'none',
+      spacing: 'relaxed',
+      fontStyle: 'minimal',
+    },
   },
   {
     id: 'sunset-orange',
@@ -89,6 +129,16 @@ export const themes: Theme[] = [
       gradient: 'from-orange-400 via-red-300 to-orange-500',
     },
     style: 'bold',
+    design: {
+      heroLayout: 'fullscreen',
+      cardStyle: 'gradient',
+      buttonStyle: 'solid',
+      navStyle: 'transparent',
+      animation: 'dynamic',
+      borderRadius: 'large',
+      spacing: 'normal',
+      fontStyle: 'bold',
+    },
   },
   {
     id: 'purple-dream',
@@ -107,6 +157,16 @@ export const themes: Theme[] = [
       gradient: 'from-violet-400 via-purple-300 to-violet-500',
     },
     style: 'playful',
+    design: {
+      heroLayout: 'asymmetric',
+      cardStyle: 'glass',
+      buttonStyle: 'pill',
+      navStyle: 'floating',
+      animation: 'playful',
+      borderRadius: 'full',
+      spacing: 'relaxed',
+      fontStyle: 'playful',
+    },
   },
   {
     id: 'rose-elegant',
@@ -125,6 +185,16 @@ export const themes: Theme[] = [
       gradient: 'from-rose-400 via-pink-300 to-rose-500',
     },
     style: 'elegant',
+    design: {
+      heroLayout: 'centered',
+      cardStyle: 'elevated',
+      buttonStyle: 'outline',
+      navStyle: 'solid',
+      animation: 'elegant',
+      borderRadius: 'medium',
+      spacing: 'normal',
+      fontStyle: 'classic',
+    },
   },
   {
     id: 'cyber-teal',
@@ -143,6 +213,16 @@ export const themes: Theme[] = [
       gradient: 'from-teal-400 via-cyan-300 to-teal-500',
     },
     style: 'bold',
+    design: {
+      heroLayout: 'split',
+      cardStyle: 'glass',
+      buttonStyle: 'gradient',
+      navStyle: 'transparent',
+      animation: 'dynamic',
+      borderRadius: 'medium',
+      spacing: 'compact',
+      fontStyle: 'modern',
+    },
   },
   {
     id: 'midnight-indigo',
@@ -161,6 +241,16 @@ export const themes: Theme[] = [
       gradient: 'from-indigo-400 via-blue-300 to-indigo-500',
     },
     style: 'corporate',
+    design: {
+      heroLayout: 'fullscreen',
+      cardStyle: 'bordered',
+      buttonStyle: 'solid',
+      navStyle: 'fixed',
+      animation: 'subtle',
+      borderRadius: 'small',
+      spacing: 'normal',
+      fontStyle: 'modern',
+    },
   },
   {
     id: 'warm-coral',
@@ -179,6 +269,16 @@ export const themes: Theme[] = [
       gradient: 'from-pink-400 via-rose-300 to-coral-500',
     },
     style: 'playful',
+    design: {
+      heroLayout: 'asymmetric',
+      cardStyle: 'elevated',
+      buttonStyle: 'pill',
+      navStyle: 'floating',
+      animation: 'playful',
+      borderRadius: 'large',
+      spacing: 'relaxed',
+      fontStyle: 'playful',
+    },
   },
   {
     id: 'monochrome-elite',
@@ -197,6 +297,16 @@ export const themes: Theme[] = [
       gradient: 'from-gray-200 via-white to-gray-300',
     },
     style: 'minimal',
+    design: {
+      heroLayout: 'minimal',
+      cardStyle: 'flat',
+      buttonStyle: 'outline',
+      navStyle: 'minimal',
+      animation: 'none',
+      borderRadius: 'none',
+      spacing: 'compact',
+      fontStyle: 'minimal',
+    },
   },
 ];
 
