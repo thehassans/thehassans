@@ -28,18 +28,18 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="relative py-16 sm:py-20 overflow-hidden">
+    <section id="about" className="relative py-16 sm:py-20 overflow-x-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white dark:from-[#0d0d0d] dark:via-[#0a0a0a] dark:to-[#0d0d0d]" />
       
-      <div ref={ref} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={ref} className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
         {/* Section Header */}
         <motion.div
           variants={fadeInUp}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 text-sm font-medium mb-4">
             About Me
@@ -61,11 +61,11 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <div className="prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none">
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+            <div className="max-w-none">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
                 I'm a <span className="text-amber-700 dark:text-amber-400 font-semibold">Generative AI Engineer</span> with hands-on experience building LLM-powered applications using LangChain, Hugging Face, and Retrieval-Augmented Generation (RAG).
               </p>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
                 Skilled in developing and deploying intelligent systems for text, image, and video generation. I'm passionate about applying cutting-edge AI tools to solve real-world problems efficiently and at scale.
               </p>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
