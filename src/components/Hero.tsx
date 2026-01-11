@@ -9,7 +9,7 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-white to-yellow-50/50 dark:from-[#0d0d0d] dark:via-[#0d0d0d] dark:to-[#111111]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-white to-yellow-50 dark:from-[#0d0d0d] dark:via-[#0d0d0d] dark:to-[#111111]" />
         
         {/* Animated Orbs */}
         <motion.div
@@ -61,7 +61,7 @@ export default function Hero() {
                   opacity: [0.4, 0.7, 0.4]
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-6 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 rounded-full blur-2xl"
+                className="absolute -inset-6 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 dark:from-amber-500 dark:via-yellow-400 dark:to-amber-600 rounded-full blur-2xl"
               />
               {/* Spinning Outer Ring */}
               <motion.div
