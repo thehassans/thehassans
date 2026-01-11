@@ -36,7 +36,7 @@ export default function Hero() {
             y: [0, -50, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400/20 dark:bg-amber-600/10 rounded-full blur-3xl"
+          className="hidden sm:block absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400/15 dark:bg-amber-600/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -45,7 +45,7 @@ export default function Hero() {
             y: [0, 100, 0],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-400/20 dark:bg-yellow-600/10 rounded-full blur-3xl"
+          className="hidden sm:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-400/15 dark:bg-yellow-600/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -53,7 +53,7 @@ export default function Hero() {
             rotate: [0, 180, 360],
           }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-300/15 dark:bg-amber-700/5 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[600px] sm:h-[600px] bg-amber-300/10 dark:bg-amber-700/5 rounded-full blur-3xl"
         />
 
         {/* Grid Pattern */}
