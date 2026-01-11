@@ -7,14 +7,14 @@ import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
 export default function Hero() {
-  const { theme } = useTheme()
+  const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   
   useEffect(() => {
     setMounted(true)
   }, [])
   
-  const isDark = mounted && theme === 'dark'
+  const isDark = mounted && resolvedTheme === 'dark'
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
@@ -78,7 +78,12 @@ export default function Hero() {
                   opacity: [0.4, 0.7, 0.4]
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-6 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 dark:from-amber-500 dark:via-yellow-400 dark:to-amber-600 rounded-full blur-2xl"
+                className="absolute -inset-8 rounded-full blur-3xl"
+                style={{
+                  background: isDark
+                    ? 'radial-gradient(circle at 50% 50%, rgba(255, 214, 102, 0.28) 0%, rgba(212, 175, 55, 0.18) 35%, rgba(212, 175, 55, 0) 70%)'
+                    : 'radial-gradient(circle at 50% 50%, rgba(255, 214, 102, 0.22) 0%, rgba(245, 158, 11, 0.14) 35%, rgba(245, 158, 11, 0) 70%)'
+                }}
               />
               {/* Spinning Outer Ring */}
               <motion.div
