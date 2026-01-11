@@ -86,7 +86,7 @@ export default function Hero() {
               {/* Solid Gold Border */}
               <div className="absolute -inset-1 bg-gradient-to-br from-amber-400 via-yellow-300 to-amber-500 rounded-full" />
               {/* Image Container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-[6px] border-[#0d0d0d] shadow-2xl shadow-amber-500/40">
+              <div className="relative w-full h-full rounded-full overflow-hidden border-[6px] border-white dark:border-[#0d0d0d] shadow-2xl shadow-amber-500/40">
                 <Image
                   src="/profile.png"
                   alt="Hassan Sarwar"
@@ -97,17 +97,6 @@ export default function Hero() {
                 {/* Premium Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
               </div>
-              {/* Status Indicator with Premium Style */}
-              <motion.div 
-                className="absolute bottom-3 right-3 md:bottom-4 md:right-4"
-                animate={{ scale: [1, 1.1, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <span className="relative flex h-6 w-6 md:h-7 md:w-7">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-6 w-6 md:h-7 md:w-7 bg-gradient-to-br from-green-400 to-emerald-500 border-3 border-[#0d0d0d] shadow-lg shadow-green-500/50"></span>
-                </span>
-              </motion.div>
               {/* Decorative Corner Accents */}
               <div className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-amber-400/60 rounded-tl-full" />
               <div className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-amber-400/60 rounded-tr-full" />
@@ -138,7 +127,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border border-amber-500/30 backdrop-blur-sm mb-6"
           >
             <Sparkles className="w-4 h-4 text-amber-400" />
-            <span className="text-sm font-semibold text-amber-300">
+            <span className="text-sm font-semibold text-amber-600 dark:text-amber-300">
               Available for opportunities
             </span>
           </motion.div>
