@@ -3,13 +3,30 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 export default function Hero() {
+  const { theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  
+  const isDark = mounted && theme === 'dark'
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-white to-yellow-50 dark:from-[#0d0d0d] dark:via-[#0d0d0d] dark:to-[#111111]" />
+        <div 
+          className="absolute inset-0 transition-colors duration-300"
+          style={{
+            background: isDark 
+              ? 'linear-gradient(to bottom right, #0d0d0d, #0d0d0d, #111111)' 
+              : 'linear-gradient(to bottom right, #fffbeb, #ffffff, #fefce8)'
+          }}
+        />
         
         {/* Animated Orbs */}
         <motion.div
