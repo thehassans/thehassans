@@ -89,24 +89,46 @@ export default function Hero() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-4 rounded-full"
+                className="absolute -inset-4 rounded-full pointer-events-none"
                 style={{
-                  background: 'conic-gradient(from 0deg, #d4af37, #f4d03f, #d4af37, transparent, #d4af37)',
-                  opacity: 0.8
+                  background: 'conic-gradient(from 0deg, #d4af37, #f4d03f, #d4af37)',
+                  opacity: isDark ? 0.45 : 0.25,
+                  WebkitMaskImage:
+                    'radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 10px))',
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskSize: '100% 100%',
+                  maskImage:
+                    'radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 10px))',
+                  maskRepeat: 'no-repeat',
+                  maskSize: '100% 100%'
                 }}
               />
               {/* Counter-Spinning Inner Ring */}
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-2 rounded-full"
+                className="absolute -inset-2 rounded-full pointer-events-none"
                 style={{
-                  background: 'conic-gradient(from 180deg, #f4d03f, transparent, #f4d03f, #d4af37, #f4d03f)',
-                  opacity: 0.9
+                  background: 'conic-gradient(from 180deg, #f4d03f, #d4af37, #f4d03f)',
+                  opacity: isDark ? 0.35 : 0.2,
+                  WebkitMaskImage:
+                    'radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px))',
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskSize: '100% 100%',
+                  maskImage:
+                    'radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px))',
+                  maskRepeat: 'no-repeat',
+                  maskSize: '100% 100%'
                 }}
               />
               {/* Solid Gold Border */}
-              <div className="absolute -inset-1 bg-gradient-to-br from-amber-400 via-yellow-300 to-amber-500 rounded-full" />
+              <div
+                className="absolute -inset-1 rounded-full pointer-events-none"
+                style={{
+                  background:
+                    'radial-gradient(circle at 50% 50%, #fff3b0 0%, #f4d03f 35%, #d4af37 70%, #b8860b 100%)'
+                }}
+              />
               {/* Image Container */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-[6px] border-white dark:border-[#0d0d0d] shadow-2xl shadow-amber-500/40">
                 <Image
