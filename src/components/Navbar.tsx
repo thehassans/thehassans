@@ -41,7 +41,7 @@ export default function Navbar() {
     >
       <div className={`transition-all duration-500 ${
         isScrolled 
-          ? 'bg-black/60 backdrop-blur-xl border-b border-amber-500/10' 
+          ? 'bg-white/80 dark:bg-black/60 backdrop-blur-xl border-b border-gray-200 dark:border-amber-500/10' 
           : 'bg-transparent'
       }`}>
         <div className="max-w-6xl mx-auto px-6 py-4">
@@ -78,8 +78,8 @@ export default function Navbar() {
                 >
                   <span className={`text-sm font-medium transition-colors ${
                     activeItem === item.name 
-                      ? 'text-amber-400' 
-                      : 'text-gray-400 hover:text-white'
+                      ? 'text-amber-500 dark:text-amber-400' 
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                   }`}>
                     {item.name}
                   </span>
@@ -102,7 +102,7 @@ export default function Navbar() {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 text-gray-400 hover:text-amber-400 transition-colors"
+                className="p-2 text-gray-600 dark:text-gray-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -122,7 +122,7 @@ export default function Navbar() {
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-gray-400"
+                className="md:hidden p-2 text-gray-600 dark:text-gray-400"
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -139,7 +139,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/90 backdrop-blur-xl border-b border-amber-500/10"
+            className="md:hidden bg-white/95 dark:bg-black/90 backdrop-blur-xl border-b border-gray-200 dark:border-amber-500/10"
           >
             <div className="px-6 py-4 space-y-1">
               {navItems.map((item, index) => (
@@ -154,7 +154,7 @@ export default function Navbar() {
                     setActiveItem(item.name)
                   }}
                   className={`block py-3 text-base font-medium transition-colors ${
-                    activeItem === item.name ? 'text-amber-400' : 'text-gray-400'
+                    activeItem === item.name ? 'text-amber-500 dark:text-amber-400' : 'text-gray-600 dark:text-gray-400'
                   }`}
                 >
                   {item.name}
