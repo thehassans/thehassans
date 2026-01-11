@@ -7,11 +7,23 @@ import Image from 'next/image'
 const certificates = [
   {
     id: 1,
-    title: "Python Programming",
+    title: "Complete Web Developer Bootcamp: Beginner to Advanced",
     issuer: "Udemy",
-    image: "https://udemy-certificate.s3.amazonaws.com/image/UC-a1156e8c-b3b5-4e0e-97d2-f5b85ce83c88.jpg",
+    instructor: "Fatah Gabrial",
+    image: "https://udemy-certificate.s3.amazonaws.com/image/UC-65de53fe-0c7e-4007-b264-9d531a3048f2.jpg",
     credentialUrl: "https://www.udemy.com/certificate/UC-65de53fe-0c7e-4007-b264-9d531a3048f2/",
-    date: "2024"
+    date: "Jan 2026",
+    hours: "40.5"
+  },
+  {
+    id: 2,
+    title: "Complete Generative AI Course With Langchain and Huggingface",
+    issuer: "Udemy",
+    instructor: "Krish Naik",
+    image: "https://udemy-certificate.s3.amazonaws.com/image/UC-a1156e8c-b3b5-4e0e-97d2-f5b85ce83c88.jpg",
+    credentialUrl: "https://www.udemy.com/certificate/UC-a1156e8c-b3b5-4e0e-97d2-f5b85ce83c88/",
+    date: "July 2025",
+    hours: "54"
   }
 ]
 
@@ -90,12 +102,17 @@ export default function Certificates() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-amber-500 transition-colors">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-amber-500 transition-colors line-clamp-2">
                     {cert.title}
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                    Issued: {cert.date}
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                    Instructor: <span className="text-gray-700 dark:text-gray-300">{cert.instructor}</span>
                   </p>
+                  <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <span>{cert.date}</span>
+                    <span className="w-1 h-1 rounded-full bg-gray-400" />
+                    <span>{cert.hours} hours</span>
+                  </div>
                   
                   {/* Verify Button */}
                   <a
