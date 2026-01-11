@@ -20,10 +20,10 @@ export default function Hero() {
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
         <div 
-          className="absolute inset-0 transition-colors duration-300"
+          className="absolute inset-0"
           style={{
             background: isDark 
-              ? 'linear-gradient(to bottom right, #0d0d0d, #0d0d0d, #111111)' 
+              ? 'radial-gradient(ellipse at center, #1a1a0a 0%, #0d0d0d 50%, #0a0a0a 100%)' 
               : 'linear-gradient(to bottom right, #fffbeb, #ffffff, #fefce8)'
           }}
         />
