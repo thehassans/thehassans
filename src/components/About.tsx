@@ -28,7 +28,7 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="relative py-20 overflow-hidden">
+    <section id="about" className="relative py-16 sm:py-20 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white dark:from-[#0d0d0d] dark:via-[#0a0a0a] dark:to-[#0d0d0d]" />
       
@@ -44,15 +44,15 @@ export default function About() {
           <span className="inline-block px-4 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 text-sm font-medium mb-4">
             About Me
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
             Crafting AI Solutions
           </h2>
-          <p className="mt-4 text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="mt-4 text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2">
             Transforming ideas into intelligent applications
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Left Column - About Text */}
           <motion.div
             variants={fadeInUp}
@@ -61,24 +61,24 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <div className="prose prose-lg dark:prose-invert">
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                I'm a <span className="text-amber-600 dark:text-amber-400 font-semibold">Generative AI Engineer</span> with 
+            <div className="prose prose-base sm:prose-lg dark:prose-invert">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                I'm a <span className="text-amber-700 dark:text-amber-400 font-semibold">Generative AI Engineer</span> with 
                 hands-on experience building LLM-powered applications using LangChain, Hugging Face, and 
                 Retrieval-Augmented Generation (RAG).
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                 Skilled in developing and deploying intelligent systems for text, image, and video generation. 
                 I'm passionate about applying cutting-edge AI tools to solve real-world problems efficiently and at scale.
               </p>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                 Beyond AI, I have extensive experience in full-stack development with the MERN stack, 
                 enabling me to build complete, production-ready applications from conception to deployment.
               </p>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
+            <div className="grid grid-cols-3 gap-2 sm:gap-6 pt-6 sm:pt-8">
               {[
                 { value: "3+", label: "Projects Deployed" },
                 { value: "13", label: "Countries Served" },
@@ -91,10 +91,10 @@ export default function About() {
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
                   className="text-center p-4 rounded-2xl bg-white dark:bg-[#1a1a1a] shadow-lg shadow-gray-200/50 dark:shadow-none border border-gray-100 dark:border-gray-800"
                 >
-                  <div className="text-3xl font-bold bg-gradient-to-r from-amber-500 to-yellow-500 bg-clip-text text-transparent">
+                  <div className="text-xl sm:text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-500 dark:from-amber-500 dark:to-yellow-500 bg-clip-text text-transparent">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                  <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -113,7 +113,7 @@ export default function About() {
               {/* Glow Effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-3xl blur-xl opacity-25 group-hover:opacity-40 transition-opacity" />
               
-              <div className="relative p-8 bg-white dark:bg-[#1a1a1a] rounded-3xl border border-gray-100 dark:border-gray-800 shadow-xl">
+              <div className="relative p-4 sm:p-8 bg-white dark:bg-[#1a1a1a] rounded-2xl sm:rounded-3xl border border-gray-100 dark:border-gray-800 shadow-xl">
                 <div className="flex items-start gap-4 mb-6">
                   <div className="relative w-16 h-16 flex-shrink-0">
                     <Image
@@ -124,10 +124,10 @@ export default function About() {
                     />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                    <h3 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">
                       Bachelor in Artificial Intelligence
                     </h3>
-                    <p className="text-amber-600 dark:text-amber-400 font-medium">
+                    <p className="text-sm sm:text-base text-amber-700 dark:text-amber-400 font-medium">
                       The University of Faisalabad
                     </p>
                   </div>

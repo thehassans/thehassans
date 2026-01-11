@@ -113,7 +113,7 @@ export default function Hero() {
             className="mb-4"
           >
             <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-              <span className="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent drop-shadow-lg">
+              <span className="bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 dark:from-amber-400 dark:via-yellow-300 dark:to-amber-500 bg-clip-text text-transparent drop-shadow-lg">
                 Hassan Sarwar
               </span>
             </h1>
@@ -126,7 +126,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border border-amber-500/30 backdrop-blur-sm mb-6"
           >
-            <Sparkles className="w-4 h-4 text-amber-400" />
+            <Sparkles className="w-4 h-4 text-amber-500 dark:text-amber-400" />
             <span className="text-sm font-semibold text-amber-600 dark:text-amber-300">
               Available for opportunities
             </span>

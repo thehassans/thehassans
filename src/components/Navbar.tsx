@@ -51,7 +51,7 @@ export default function Navbar() {
             <motion.div whileHover={{ scale: 1.02 }}>
               <Link href="/" className="flex items-center gap-3">
                 <div className="relative">
-                  <span className="text-2xl font-black bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
+                  <span className="text-2xl font-black bg-gradient-to-r from-amber-600 to-orange-500 dark:from-amber-400 dark:to-yellow-300 bg-clip-text text-transparent">
                     HS
                   </span>
                   <motion.div
