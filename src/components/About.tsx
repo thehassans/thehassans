@@ -117,7 +117,7 @@ export default function About() {
                 <div className="flex items-start gap-4 mb-6">
                   <div className="relative w-16 h-16 flex-shrink-0">
                     <Image
-                      src="/tuf-logo.jpg"
+                      src="/tuf-logo.png"
                       alt="The University of Faisalabad"
                       fill
                       className="object-contain"
