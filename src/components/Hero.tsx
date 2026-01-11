@@ -87,12 +87,13 @@ export default function Hero() {
               />
               {/* Spinning Outer Ring */}
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                animate={{ opacity: [0.25, 0.45, 0.25] }}
+                transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -inset-4 rounded-full pointer-events-none"
                 style={{
-                  background: 'conic-gradient(from 0deg, #d4af37, #f4d03f, #d4af37)',
-                  opacity: isDark ? 0.45 : 0.25,
+                  background:
+                    'radial-gradient(circle at 50% 50%, #fff3b0 0%, #f4d03f 45%, #d4af37 75%, #b8860b 100%)',
+                  opacity: isDark ? 0.35 : 0.2,
                   WebkitMaskImage:
                     'radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 10px))',
                   WebkitMaskRepeat: 'no-repeat',
@@ -105,12 +106,13 @@ export default function Hero() {
               />
               {/* Counter-Spinning Inner Ring */}
               <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                animate={{ opacity: [0.18, 0.32, 0.18] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -inset-2 rounded-full pointer-events-none"
                 style={{
-                  background: 'conic-gradient(from 180deg, #f4d03f, #d4af37, #f4d03f)',
-                  opacity: isDark ? 0.35 : 0.2,
+                  background:
+                    'radial-gradient(circle at 50% 50%, rgba(255, 243, 176, 0.9) 0%, rgba(244, 208, 63, 0.8) 55%, rgba(212, 175, 55, 0.85) 100%)',
+                  opacity: isDark ? 0.25 : 0.15,
                   WebkitMaskImage:
                     'radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px))',
                   WebkitMaskRepeat: 'no-repeat',
