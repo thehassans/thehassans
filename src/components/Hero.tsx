@@ -23,7 +23,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background: isDark 
-              ? 'radial-gradient(ellipse at center, #1a1a0a 0%, #0d0d0d 50%, #0a0a0a 100%)' 
+              ? 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212, 175, 55, 0.15) 0%, rgba(13, 13, 13, 1) 50%, #0a0a0a 100%)' 
               : 'linear-gradient(to bottom right, #fffbeb, #ffffff, #fefce8)'
           }}
         />
