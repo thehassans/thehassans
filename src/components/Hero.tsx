@@ -87,40 +87,24 @@ export default function Hero() {
               />
               {/* Spinning Outer Ring */}
               <motion.div
-                animate={{ opacity: [0.25, 0.45, 0.25] }}
+                animate={{ opacity: [0.45, 0.75, 0.45] }}
                 transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-4 rounded-full pointer-events-none"
+                className="absolute -inset-4 rounded-full pointer-events-none border-2 border-amber-300/50 dark:border-amber-400/35"
                 style={{
-                  background:
-                    'radial-gradient(circle at 50% 50%, #fff3b0 0%, #f4d03f 45%, #d4af37 75%, #b8860b 100%)',
-                  opacity: isDark ? 0.35 : 0.2,
-                  WebkitMaskImage:
-                    'radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 10px))',
-                  WebkitMaskRepeat: 'no-repeat',
-                  WebkitMaskSize: '100% 100%',
-                  maskImage:
-                    'radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 10px))',
-                  maskRepeat: 'no-repeat',
-                  maskSize: '100% 100%'
+                  boxShadow: isDark
+                    ? '0 0 24px rgba(212, 175, 55, 0.22), inset 0 0 18px rgba(255, 214, 102, 0.10)'
+                    : '0 0 18px rgba(245, 158, 11, 0.18), inset 0 0 14px rgba(255, 214, 102, 0.08)'
                 }}
               />
               {/* Counter-Spinning Inner Ring */}
               <motion.div
-                animate={{ opacity: [0.18, 0.32, 0.18] }}
+                animate={{ opacity: [0.3, 0.55, 0.3] }}
                 transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-2 rounded-full pointer-events-none"
+                className="absolute -inset-2 rounded-full pointer-events-none border border-amber-200/50 dark:border-amber-300/25"
                 style={{
-                  background:
-                    'radial-gradient(circle at 50% 50%, rgba(255, 243, 176, 0.9) 0%, rgba(244, 208, 63, 0.8) 55%, rgba(212, 175, 55, 0.85) 100%)',
-                  opacity: isDark ? 0.25 : 0.15,
-                  WebkitMaskImage:
-                    'radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px))',
-                  WebkitMaskRepeat: 'no-repeat',
-                  WebkitMaskSize: '100% 100%',
-                  maskImage:
-                    'radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 6px))',
-                  maskRepeat: 'no-repeat',
-                  maskSize: '100% 100%'
+                  boxShadow: isDark
+                    ? '0 0 14px rgba(212, 175, 55, 0.14), inset 0 0 10px rgba(255, 214, 102, 0.08)'
+                    : '0 0 10px rgba(245, 158, 11, 0.12), inset 0 0 8px rgba(255, 214, 102, 0.06)'
                 }}
               />
               {/* Solid Gold Border */}
