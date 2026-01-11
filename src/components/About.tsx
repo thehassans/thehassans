@@ -28,11 +28,11 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="relative py-16 sm:py-20 overflow-x-hidden">
+    <section id="about" className="relative py-16 sm:py-20 overflow-hidden w-full max-w-full">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white dark:from-[#0d0d0d] dark:via-[#0a0a0a] dark:to-[#0d0d0d]" />
       
-      <div ref={ref} className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-8">
+      <div ref={ref} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full box-border">
         {/* Section Header */}
         <motion.div
           variants={fadeInUp}
@@ -52,14 +52,14 @@ export default function About() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start w-full">
           {/* Left Column - About Text */}
           <motion.div
             variants={fadeInUp}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6 w-full overflow-hidden"
+            className="space-y-6 w-full max-w-full overflow-hidden box-border"
           >
             <div className="w-full">
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-4 whitespace-normal">
