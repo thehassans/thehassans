@@ -61,19 +61,15 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <div className="prose prose-base sm:prose-lg dark:prose-invert">
+            <div className="prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none">
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                I'm a <span className="text-amber-700 dark:text-amber-400 font-semibold">Generative AI Engineer</span> with 
-                hands-on experience building LLM-powered applications using LangChain, Hugging Face, and 
-                Retrieval-Augmented Generation (RAG).
+                I'm a <span className="text-amber-700 dark:text-amber-400 font-semibold">Generative AI Engineer</span> with hands-on experience building LLM-powered applications using LangChain, Hugging Face, and Retrieval-Augmented Generation (RAG).
               </p>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                Skilled in developing and deploying intelligent systems for text, image, and video generation. 
-                I'm passionate about applying cutting-edge AI tools to solve real-world problems efficiently and at scale.
+                Skilled in developing and deploying intelligent systems for text, image, and video generation. I'm passionate about applying cutting-edge AI tools to solve real-world problems efficiently and at scale.
               </p>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                Beyond AI, I have extensive experience in full-stack development with the MERN stack, 
-                enabling me to build complete, production-ready applications from conception to deployment.
+                Beyond AI, I have extensive experience in full-stack development with the MERN stack, enabling me to build complete, production-ready applications from conception to deployment.
               </p>
             </div>
 
