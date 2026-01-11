@@ -1,311 +1,292 @@
-'use client';
+"use client"
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
-import { 
-  Palette, 
-  Mail, 
-  LogOut, 
-  Check, 
-  Loader2, 
-  Trash2,
-  User,
-  Calendar,
-  MessageSquare,
-  Settings,
-  Home
-} from 'lucide-react';
-import { themes, Theme } from '@/lib/themes';
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { Lock, Mail, Eye, EyeOff, LogOut, Users, MessageSquare, BarChart3, Sparkles } from 'lucide-react'
 
-interface Contact {
-  _id: string;
-  name: string;
-  email: string;
-  message: string;
-  createdAt: string;
+interface ContactMessage {
+  _id: string
+  name: string
+  email: string
+  message: string
+  createdAt: string
 }
 
-export default function AdminDashboard() {
-  const router = useRouter();
-  const [activeTab, setActiveTab] = useState<'themes' | 'messages'>('themes');
-  const [currentTheme, setCurrentTheme] = useState<string>('gold-luxury');
-  const [contacts, setContacts] = useState<Contact[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [authenticated, setAuthenticated] = useState(false);
+export default function AdminPage() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [error, setError] = useState('')
+  const [messages, setMessages] = useState<ContactMessage[]>([])
+  const [loadingMessages, setLoadingMessages] = useState(false)
 
   useEffect(() => {
-    checkAuth();
-  }, []);
-
-  useEffect(() => {
-    if (authenticated) {
-      fetchData();
+    const token = localStorage.getItem('adminToken')
+    if (token) {
+      setIsLoggedIn(true)
+      fetchMessages()
     }
-  }, [authenticated]);
+    setIsLoading(false)
+  }, [])
 
-  const checkAuth = async () => {
-    try {
-      const res = await fetch('/api/auth/check');
-      const data = await res.json();
-      if (!data.authenticated) {
-        router.push('/admin/login');
-      } else {
-        setAuthenticated(true);
-      }
-    } catch {
-      router.push('/admin/login');
-    }
-  };
-
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const [themeRes, contactsRes] = await Promise.all([
-        fetch('/api/settings/theme'),
-        fetch('/api/contacts'),
-      ]);
-      
-      const themeData = await themeRes.json();
-      const contactsData = await contactsRes.json();
-      
-      setCurrentTheme(themeData.themeId || 'gold-luxury');
-      setContacts(contactsData.contacts || []);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleThemeChange = async (themeId: string) => {
-    setSaving(true);
-    try {
-      const res = await fetch('/api/settings/theme', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ themeId }),
-      });
-      
-      if (res.ok) {
-        setCurrentTheme(themeId);
-      }
-    } catch (error) {
-      console.error('Error saving theme:', error);
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  const handleDeleteContact = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this message?')) return;
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError('')
     
     try {
-      const res = await fetch(`/api/contacts?id=${id}`, { method: 'DELETE' });
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      })
+      
+      const data = await res.json()
+      
       if (res.ok) {
-        setContacts(contacts.filter(c => c._id !== id));
+        localStorage.setItem('adminToken', data.token)
+        setIsLoggedIn(true)
+        fetchMessages()
+      } else {
+        setError(data.error || 'Invalid credentials')
       }
-    } catch (error) {
-      console.error('Error deleting contact:', error);
+    } catch {
+      setError('Something went wrong')
     }
-  };
+  }
 
-  const handleLogout = async () => {
-    await fetch('/api/auth/logout', { method: 'POST' });
-    router.push('/admin/login');
-  };
+  const handleLogout = () => {
+    localStorage.removeItem('adminToken')
+    setIsLoggedIn(false)
+    setMessages([])
+  }
 
-  if (!authenticated || loading) {
+  const fetchMessages = async () => {
+    setLoadingMessages(true)
+    try {
+      const token = localStorage.getItem('adminToken')
+      const res = await fetch('/api/admin/messages', {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      
+      if (res.ok) {
+        const data = await res.json()
+        setMessages(data.messages || [])
+      }
+    } catch (err) {
+      console.error('Failed to fetch messages:', err)
+    }
+    setLoadingMessages(false)
+  }
+
+  if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-amber-500 animate-spin" />
+      <div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-amber-500 border-t-transparent rounded-full animate-spin" />
       </div>
-    );
+    )
+  }
+
+  if (!isLoggedIn) {
+    return (
+      <div className="min-h-screen bg-[#0d0d0d] flex items-center justify-center px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="w-full max-w-md"
+        >
+          <div className="bg-[#111111] rounded-2xl border border-gray-800 p-8 shadow-2xl">
+            {/* Header */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-500/30 mb-4">
+                <Lock className="w-8 h-8 text-amber-500" />
+              </div>
+              <h1 className="text-2xl font-bold text-white mb-2">Admin Panel</h1>
+              <p className="text-gray-400 text-sm">Sign in to access the dashboard</p>
+            </div>
+
+            {/* Login Form */}
+            <form onSubmit={handleLogin} className="space-y-5">
+              {error && (
+                <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-sm text-center">
+                  {error}
+                </div>
+              )}
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full pl-10 pr-4 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
+                    placeholder="admin@example.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                <div className="relative">
+                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full pl-10 pr-12 py-3 bg-[#1a1a1a] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
+                    placeholder="••••••••"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300 transition-colors"
+                  >
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                  </button>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3 px-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-black font-semibold rounded-lg hover:from-amber-400 hover:to-yellow-400 transition-all duration-300 shadow-lg shadow-amber-500/20"
+              >
+                Sign In
+              </button>
+            </form>
+          </div>
+        </motion.div>
+      </div>
+    )
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[#0d0d0d]">
       {/* Header */}
-      <header className="bg-[#1a1a1a] border-b border-gray-800 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
-                <Settings className="w-5 h-5 text-black" />
-              </div>
-              <span className="text-xl font-bold text-white">Admin Panel</span>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              <a 
-                href="/" 
-                target="_blank"
-                className="flex items-center gap-2 px-4 py-2 text-gray-400 hover:text-white transition-colors"
-              >
-                <Home className="w-4 h-4" />
-                View Site
-              </a>
-              <button
-                onClick={handleLogout}
-                className="flex items-center gap-2 px-4 py-2 text-gray-400 hover:text-red-400 transition-colors"
-              >
-                <LogOut className="w-4 h-4" />
-                Logout
-              </button>
+      <header className="bg-[#111111] border-b border-gray-800 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-black">
+                <span className="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent">HS</span>
+              </span>
+              <span className="h-6 w-px bg-gradient-to-b from-transparent via-amber-500/50 to-transparent" />
+              <span className="text-sm font-medium text-gray-400">Admin Panel</span>
             </div>
           </div>
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#1a1a1a] border border-gray-700 text-gray-300 hover:text-white hover:border-gray-600 transition-colors"
+          >
+            <LogOut className="w-4 h-4" />
+            <span>Logout</span>
+          </button>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Tabs */}
-        <div className="flex gap-4 mb-8">
-          <button
-            onClick={() => setActiveTab('themes')}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
-              activeTab === 'themes'
-                ? 'bg-amber-500 text-black'
-                : 'bg-[#1a1a1a] text-gray-400 hover:text-white'
-            }`}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Stats */}
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-[#111111] rounded-xl border border-gray-800 p-6"
           >
-            <Palette className="w-5 h-5" />
-            Theme Customization
-          </button>
-          <button
-            onClick={() => setActiveTab('messages')}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
-              activeTab === 'messages'
-                ? 'bg-amber-500 text-black'
-                : 'bg-[#1a1a1a] text-gray-400 hover:text-white'
-            }`}
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-lg bg-amber-500/10">
+                <MessageSquare className="w-6 h-6 text-amber-500" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-400">Total Messages</p>
+                <p className="text-2xl font-bold text-white">{messages.length}</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-[#111111] rounded-xl border border-gray-800 p-6"
           >
-            <Mail className="w-5 h-5" />
-            Messages
-            {contacts.length > 0 && (
-              <span className="ml-2 px-2 py-0.5 text-xs bg-red-500 text-white rounded-full">
-                {contacts.length}
-              </span>
-            )}
-          </button>
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-lg bg-green-500/10">
+                <Users className="w-6 h-6 text-green-500" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-400">Unique Visitors</p>
+                <p className="text-2xl font-bold text-white">-</p>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="bg-[#111111] rounded-xl border border-gray-800 p-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-lg bg-purple-500/10">
+                <BarChart3 className="w-6 h-6 text-purple-500" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-400">Page Views</p>
+                <p className="text-2xl font-bold text-white">-</p>
+              </div>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Theme Customization Tab */}
-        {activeTab === 'themes' && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h2 className="text-2xl font-bold text-white mb-6">Choose Your Theme</h2>
-            <p className="text-gray-400 mb-8">Select a theme to customize the look and feel of your portfolio.</p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-              {themes.map((theme: Theme) => (
-                <motion.button
-                  key={theme.id}
-                  onClick={() => handleThemeChange(theme.id)}
-                  disabled={saving}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`relative p-4 rounded-xl border-2 transition-all text-left ${
-                    currentTheme === theme.id
-                      ? 'border-amber-500 bg-amber-500/10'
-                      : 'border-gray-700 bg-[#1a1a1a] hover:border-gray-600'
-                  }`}
-                >
-                  {currentTheme === theme.id && (
-                    <div className="absolute top-2 right-2 w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center">
-                      <Check className="w-4 h-4 text-black" />
-                    </div>
-                  )}
-                  
-                  {/* Color Preview */}
-                  <div className="flex gap-1 mb-3">
-                    <div 
-                      className="w-8 h-8 rounded-lg" 
-                      style={{ backgroundColor: theme.colors.primary }}
-                    />
-                    <div 
-                      className="w-8 h-8 rounded-lg" 
-                      style={{ backgroundColor: theme.colors.primaryLight }}
-                    />
-                    <div 
-                      className="w-8 h-8 rounded-lg" 
-                      style={{ backgroundColor: theme.colors.background }}
-                    />
-                  </div>
-                  
-                  <h3 className="font-semibold text-white mb-1">{theme.name}</h3>
-                  <p className="text-xs text-gray-400">{theme.description}</p>
-                  <span className="inline-block mt-2 px-2 py-0.5 text-xs bg-gray-700 text-gray-300 rounded">
-                    {theme.style}
-                  </span>
-                </motion.button>
-              ))}
+        {/* Messages Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="bg-[#111111] rounded-xl border border-gray-800"
+        >
+          <div className="p-6 border-b border-gray-800 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Sparkles className="w-5 h-5 text-amber-500" />
+              <h2 className="text-lg font-semibold text-white">Contact Messages</h2>
             </div>
+            <button
+              onClick={fetchMessages}
+              disabled={loadingMessages}
+              className="text-sm text-amber-500 hover:text-amber-400 transition-colors"
+            >
+              {loadingMessages ? 'Loading...' : 'Refresh'}
+            </button>
+          </div>
 
-            {saving && (
-              <div className="mt-4 flex items-center gap-2 text-amber-500">
-                <Loader2 className="w-4 h-4 animate-spin" />
-                Saving theme...
-              </div>
-            )}
-          </motion.div>
-        )}
-
-        {/* Messages Tab */}
-        {activeTab === 'messages' && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h2 className="text-2xl font-bold text-white mb-6">Contact Messages</h2>
-            
-            {contacts.length === 0 ? (
-              <div className="text-center py-16 bg-[#1a1a1a] rounded-xl border border-gray-800">
-                <MessageSquare className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                <p className="text-gray-400">No messages yet</p>
+          <div className="divide-y divide-gray-800">
+            {messages.length === 0 ? (
+              <div className="p-12 text-center text-gray-500">
+                No messages yet
               </div>
             ) : (
-              <div className="space-y-4">
-                {contacts.map((contact) => (
-                  <motion.div
-                    key={contact._id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="bg-[#1a1a1a] rounded-xl p-6 border border-gray-800"
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
-                          <User className="w-5 h-5 text-black" />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold text-white">{contact.name}</h3>
-                          <p className="text-sm text-amber-400">{contact.email}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-1 text-gray-500 text-sm">
-                          <Calendar className="w-4 h-4" />
-                          {new Date(contact.createdAt).toLocaleDateString()}
-                        </div>
-                        <button
-                          onClick={() => handleDeleteContact(contact._id)}
-                          className="p-2 text-gray-500 hover:text-red-400 transition-colors"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
+              messages.map((msg) => (
+                <div key={msg._id} className="p-6 hover:bg-[#1a1a1a] transition-colors">
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <h3 className="font-medium text-white">{msg.name}</h3>
+                      <p className="text-sm text-amber-500">{msg.email}</p>
                     </div>
-                    <p className="text-gray-300 whitespace-pre-wrap">{contact.message}</p>
-                  </motion.div>
-                ))}
-              </div>
+                    <span className="text-xs text-gray-500">
+                      {new Date(msg.createdAt).toLocaleDateString()}
+                    </span>
+                  </div>
+                  <p className="text-gray-400 text-sm">{msg.message}</p>
+                </div>
+              ))
             )}
-          </motion.div>
-        )}
-      </div>
+          </div>
+        </motion.div>
+      </main>
     </div>
-  );
+  )
 }
