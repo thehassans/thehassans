@@ -52,71 +52,25 @@ export default function Hero() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="relative mb-12"
           >
-            {/* Profile Image with Ultra Premium Effects */}
-            <div className="relative mx-auto w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-72 lg:h-72">
-              {/* Outermost Rotating Ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-8 rounded-full"
-                style={{
-                  background: 'conic-gradient(from 0deg, transparent 0%, rgba(212, 175, 55, 0.3) 25%, transparent 50%, rgba(245, 158, 11, 0.3) 75%, transparent 100%)'
-                }}
-              />
-              {/* Pulsing Outer Glow */}
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.15, 1],
-                  opacity: [0.5, 0.8, 0.5]
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-6 rounded-full blur-2xl bg-gradient-to-r from-amber-500/30 via-yellow-400/20 to-amber-500/30 dark:from-amber-500/25 dark:via-yellow-400/15 dark:to-amber-500/25"
-              />
-              {/* Middle Glowing Ring */}
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute -inset-4 rounded-full border-2 border-dashed border-amber-400/40 dark:border-amber-500/30"
-              />
-              {/* Inner Static Ring */}
-              <div className="absolute -inset-2 rounded-full border border-amber-300/60 dark:border-amber-400/40 shadow-[0_0_20px_rgba(212,175,55,0.25)] dark:shadow-[0_0_30px_rgba(212,175,55,0.2)]" />
-              {/* Solid Gold Gradient Border */}
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-yellow-300 via-amber-400 to-yellow-600 dark:from-yellow-400 dark:via-amber-500 dark:to-yellow-700 p-[3px]">
-                <div className="w-full h-full rounded-full bg-white dark:bg-[#0d0d0d]" />
+            {/* Profile Image Container */}
+            <div className="relative mx-auto w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72">
+              {/* Subtle Outer Glow */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-b from-amber-400/20 via-yellow-500/10 to-amber-400/20 dark:from-amber-500/15 dark:via-yellow-400/8 dark:to-amber-500/15 blur-xl" />
+              {/* Gold Border Ring */}
+              <div className="absolute inset-0 rounded-full p-[4px] bg-gradient-to-b from-amber-300 via-yellow-400 to-amber-500 dark:from-amber-400 dark:via-yellow-500 dark:to-amber-600 shadow-lg shadow-amber-500/25 dark:shadow-amber-500/20">
+                <div className="w-full h-full rounded-full bg-white dark:bg-[#0a0a0a] p-[3px]">
+                  {/* Image */}
+                  <div className="relative w-full h-full rounded-full overflow-hidden">
+                    <Image
+                      src="/profile.jpg"
+                      alt="Hassan Sarwar"
+                      fill
+                      className="object-cover object-[center_20%]"
+                      priority
+                    />
+                  </div>
+                </div>
               </div>
-              {/* Image Container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl shadow-amber-500/30 dark:shadow-amber-600/20">
-                <Image
-                  src="/profile.jpg"
-                  alt="Hassan Sarwar"
-                  fill
-                  className="object-cover scale-[1.15] object-[center_15%]"
-                  priority
-                />
-                {/* Premium Vignette Overlay */}
-                <div className="absolute inset-0 rounded-full shadow-[inset_0_0_30px_rgba(0,0,0,0.3)]" />
-              </div>
-              {/* Sparkle Dots */}
-              <motion.div
-                animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 0.8] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-2 left-1/2 w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.8)]"
-              />
-              <motion.div
-                animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 0.8] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-1/4 -right-2 w-1.5 h-1.5 rounded-full bg-yellow-300 shadow-[0_0_6px_rgba(253,224,71,0.8)]"
-              />
-              <motion.div
-                animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 0.8] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-1/4 -left-2 w-1.5 h-1.5 rounded-full bg-amber-300 shadow-[0_0_6px_rgba(252,211,77,0.8)]"
-              />
-              <motion.div
-                animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 0.8] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute -bottom-1 left-1/2 w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.8)]"
-              />
             </div>
           </motion.div>
 
