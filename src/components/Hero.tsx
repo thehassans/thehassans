@@ -85,7 +85,7 @@ export default function Hero() {
                   src="/profile.jpg"
                   alt="Hassan Sarwar"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-top"
                   priority
                 />
                 {/* Premium Overlay */}
