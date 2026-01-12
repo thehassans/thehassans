@@ -3,30 +3,13 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 import Image from 'next/image'
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
 
 export default function Hero() {
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-  
-  const isDark = mounted && resolvedTheme === 'dark'
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: isDark 
-              ? 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212, 175, 55, 0.15) 0%, rgba(13, 13, 13, 1) 50%, #0a0a0a 100%)' 
-              : 'linear-gradient(to bottom right, #fffbeb, #ffffff, #fefce8)'
-          }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-white to-yellow-50/50 dark:from-[#0d0d0d] dark:via-[#0d0d0d] dark:to-[#111111]" />
         
         {/* Animated Orbs */}
         <motion.div
@@ -36,7 +19,7 @@ export default function Hero() {
             y: [0, -50, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-          className="hidden sm:block absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400/15 dark:bg-amber-600/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400/20 dark:bg-amber-600/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -45,7 +28,7 @@ export default function Hero() {
             y: [0, 100, 0],
           }}
           transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          className="hidden sm:block absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-400/15 dark:bg-yellow-600/10 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-400/20 dark:bg-yellow-600/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -53,7 +36,7 @@ export default function Hero() {
             rotate: [0, 180, 360],
           }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] sm:w-[600px] sm:h-[600px] bg-amber-300/10 dark:bg-amber-700/5 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-300/15 dark:bg-amber-700/5 rounded-full blur-3xl"
         />
 
         {/* Grid Pattern */}
@@ -78,47 +61,28 @@ export default function Hero() {
                   opacity: [0.4, 0.7, 0.4]
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-8 rounded-full blur-3xl"
-                style={{
-                  background: isDark
-                    ? 'radial-gradient(circle at 50% 50%, rgba(255, 214, 102, 0.28) 0%, rgba(212, 175, 55, 0.18) 35%, rgba(212, 175, 55, 0) 70%)'
-                    : 'radial-gradient(circle at 50% 50%, rgba(255, 214, 102, 0.22) 0%, rgba(245, 158, 11, 0.14) 35%, rgba(245, 158, 11, 0) 70%)'
-                }}
+                className="absolute -inset-8 rounded-full blur-3xl bg-[radial-gradient(circle_at_50%_50%,rgba(255,214,102,0.22)_0%,rgba(245,158,11,0.14)_35%,rgba(245,158,11,0)_70%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(255,214,102,0.28)_0%,rgba(212,175,55,0.18)_35%,rgba(212,175,55,0)_70%)]"
               />
               {/* Spinning Outer Ring */}
               <motion.div
                 animate={{ opacity: [0.45, 0.75, 0.45] }}
                 transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-4 rounded-full pointer-events-none border-2 border-amber-300/50 dark:border-amber-400/35"
-                style={{
-                  boxShadow: isDark
-                    ? '0 0 24px rgba(212, 175, 55, 0.22), inset 0 0 18px rgba(255, 214, 102, 0.10)'
-                    : '0 0 18px rgba(245, 158, 11, 0.18), inset 0 0 14px rgba(255, 214, 102, 0.08)'
-                }}
+                className="absolute -inset-4 rounded-full pointer-events-none border-2 border-amber-300/50 shadow-[0_0_18px_rgba(245,158,11,0.18),inset_0_0_14px_rgba(255,214,102,0.08)] dark:border-amber-400/35 dark:shadow-[0_0_24px_rgba(212,175,55,0.22),inset_0_0_18px_rgba(255,214,102,0.10)]"
               />
               {/* Counter-Spinning Inner Ring */}
               <motion.div
                 animate={{ opacity: [0.3, 0.55, 0.3] }}
                 transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-2 rounded-full pointer-events-none border border-amber-200/50 dark:border-amber-300/25"
-                style={{
-                  boxShadow: isDark
-                    ? '0 0 14px rgba(212, 175, 55, 0.14), inset 0 0 10px rgba(255, 214, 102, 0.08)'
-                    : '0 0 10px rgba(245, 158, 11, 0.12), inset 0 0 8px rgba(255, 214, 102, 0.06)'
-                }}
+                className="absolute -inset-2 rounded-full pointer-events-none border border-amber-200/50 shadow-[0_0_10px_rgba(245,158,11,0.12),inset_0_0_8px_rgba(255,214,102,0.06)] dark:border-amber-300/25 dark:shadow-[0_0_14px_rgba(212,175,55,0.14),inset_0_0_10px_rgba(255,214,102,0.08)]"
               />
               {/* Solid Gold Border */}
               <div
-                className="absolute -inset-1 rounded-full pointer-events-none"
-                style={{
-                  background:
-                    'radial-gradient(circle at 50% 50%, #fff3b0 0%, #f4d03f 35%, #d4af37 70%, #b8860b 100%)'
-                }}
+                className="absolute -inset-1 rounded-full pointer-events-none bg-[radial-gradient(circle_at_50%_50%,#fff3b0_0%,#f4d03f_35%,#d4af37_70%,#b8860b_100%)]"
               />
               {/* Image Container */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-[6px] border-white dark:border-[#0d0d0d] shadow-2xl shadow-amber-500/40">
                 <Image
-                  src="/profile.png"
+                  src="/profile.jpg"
                   alt="Hassan Sarwar"
                   fill
                   className="object-cover object-center"
