@@ -50,7 +50,7 @@ const projects = [
     id: "magnetic-clouds",
     title: "Magnet Clouds",
     description: "A comprehensive cloud services company offering 13+ different services including cutting-edge AI solutions like Nobot AI for intelligent chatbots and Magnetic ShieldX for security.",
-    link: "https://magnet-clouds.com",
+    link: "https://magnetic-clouds.com",
     icon: Cloud,
     stats: "13+ Services",
     gradient: "from-cyan-500 to-blue-500",

@@ -119,7 +119,7 @@ export default function MagneticCloudsProject() {
 
               <div className="flex flex-wrap gap-4">
                 <motion.a
-                  href="https://magnet-clouds.com"
+                  href="https://magnetic-clouds.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
@@ -279,14 +279,14 @@ export default function MagneticCloudsProject() {
               Discover how our AI-powered services can transform your digital infrastructure.
             </p>
             <motion.a
-              href="https://magnet-clouds.com"
+              href="https://magnetic-clouds.com"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
             >
-              Visit Magnet-Clouds.com
+              Visit Magnetic-Clouds.com
               <ExternalLink size={20} />
             </motion.a>
           </motion.div>
