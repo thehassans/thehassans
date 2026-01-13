@@ -3,59 +3,69 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowUpRight, ExternalLink, ShoppingCart, Cloud, Plane, Sparkles, Bot, Gamepad2, Globe } from 'lucide-react'
+import { ArrowUpRight, ExternalLink, ShoppingCart, Cloud, Plane, Sparkles, Bot, Gamepad2, Globe, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 
 const projects = [
   {
     id: "ai-smartbot",
     title: "AI Smartbot",
-    description: "Instant AI chatbot for websites that auto-learns from your business content",
+    description: "Create a FREE AI Chatbot for your website instantly. Just enter your URL and the chatbot educates itself about your business. Your ultimate AI assistant for 24/7 customer support.",
     link: "https://sitesgptbot.com",
     icon: Bot,
     stats: "FREE AI Bot",
     gradient: "from-purple-500 to-indigo-500",
     bgGradient: "from-purple-600 via-indigo-600 to-purple-700",
+    features: ["Auto-learns from website", "24/7 Support", "Human handoff mode"],
+    tech: ["React", "OpenAI", "LangChain", "RAG"],
   },
   {
     id: "old-arcade",
     title: "Old Arcade",
-    description: "Gaming products e-commerce platform with consoles & peripherals",
+    description: "A comprehensive gaming e-commerce platform offering a wide range of gaming products including consoles, peripherals, accessories, and PC components. Built for gamers, by gamers.",
     link: "https://old-arcade.com",
     icon: Gamepad2,
     stats: "500+ Products",
     gradient: "from-red-500 to-orange-500",
     bgGradient: "from-red-600 via-orange-600 to-red-700",
+    features: ["Gaming consoles", "PC components", "Secure payments"],
+    tech: ["Next.js", "MongoDB", "Stripe", "Redux"],
   },
   {
     id: "buysial",
     title: "Buysial Commerce",
-    description: "E-commerce platform with AI automation running in 13 countries",
+    description: "A multi-role B2B/B2C e-commerce system for managing orders, logistics, and finances across multiple GCC countries. Complete with WhatsApp integration and multi-currency support.",
     link: "https://buysial.com",
     icon: ShoppingCart,
     stats: "13 Countries",
     gradient: "from-amber-500 to-yellow-500",
     bgGradient: "from-amber-600 via-yellow-600 to-amber-700",
+    features: ["Multi-country ops", "WhatsApp integration", "Role-based access"],
+    tech: ["React", "Node.js", "MongoDB", "WhatsApp API"],
   },
   {
     id: "magnetic-clouds",
     title: "Magnet Clouds",
-    description: "Domain & hosting with 13+ services including Nobot AI",
+    description: "A comprehensive cloud services company offering 13+ different services including cutting-edge AI solutions like Nobot AI for intelligent chatbots and Magnetic ShieldX for security.",
     link: "https://magnet-clouds.com",
     icon: Cloud,
     stats: "13+ Services",
     gradient: "from-cyan-500 to-blue-500",
     bgGradient: "from-cyan-600 via-blue-600 to-cyan-700",
+    features: ["Nobot AI chatbots", "Web hosting", "SSL & Security"],
+    tech: ["Next.js", "AWS", "Docker", "AI/ML"],
   },
   {
     id: "explore-holidays",
     title: "Explore Holidays",
-    description: "Complete travel agency with hotel, car rental & tour booking",
+    description: "Complete travel agency website providing seamless travel experiences with hotel booking, car rental, and tour planning services with personalized recommendations.",
     link: "https://exploreholidays.hassanscode.com",
     icon: Plane,
     stats: "Full Service",
     gradient: "from-emerald-500 to-teal-500",
     bgGradient: "from-emerald-600 via-teal-600 to-emerald-700",
+    features: ["Hotel booking", "Car rental", "Tour packages"],
+    tech: ["Next.js", "Tailwind", "Stripe", "Google Maps"],
   }
 ]
 
@@ -71,7 +81,7 @@ export default function Projects() {
       {/* Subtle Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.02)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(212,175,55,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-      <div ref={ref} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={ref} className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -96,8 +106,8 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Projects - One per row */}
+        <div className="space-y-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -106,73 +116,106 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
               className="group"
             >
-              <Link href={`/projects/${project.id}`}>
-                <div className="relative h-full bg-white dark:bg-[#111] rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/10">
-                  {/* Preview Area */}
-                  <div className={`relative h-44 overflow-hidden bg-gradient-to-br ${project.bgGradient}`}>
+              <div className="relative bg-white dark:bg-[#111] rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/10">
+                <div className="grid lg:grid-cols-2 gap-0">
+                  {/* Preview Area - Left Side */}
+                  <div className={`relative h-64 sm:h-80 lg:h-auto lg:min-h-[320px] overflow-hidden bg-gradient-to-br ${project.bgGradient}`}>
                     {/* Decorative Pattern */}
                     <div className="absolute inset-0 opacity-10">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,white_1px,transparent_1px)] bg-[size:20px_20px]" />
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,white_1px,transparent_1px)] bg-[size:24px_24px]" />
                     </div>
                     
                     {/* Large Icon */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <project.icon size={80} className="text-white/20" strokeWidth={1} />
+                      <project.icon size={140} className="text-white/15" strokeWidth={0.8} />
                     </div>
                     
                     {/* URL Badge */}
-                    <div className="absolute top-4 left-4 right-4">
-                      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-black/20 backdrop-blur-sm rounded-full">
-                        <Globe size={12} className="text-white/80" />
-                        <span className="text-xs text-white/90 font-medium truncate">
+                    <div className="absolute top-6 left-6">
+                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-black/30 backdrop-blur-sm rounded-full">
+                        <Globe size={14} className="text-white/90" />
+                        <span className="text-sm text-white font-medium">
                           {project.link.replace('https://', '')}
                         </span>
                       </div>
                     </div>
 
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="flex gap-3">
-                        <span
-                          onClick={(e) => {
-                            e.preventDefault()
-                            window.open(project.link, '_blank')
-                          }}
-                          className="flex items-center gap-1.5 px-4 py-2 bg-white rounded-lg text-xs font-semibold text-gray-900 hover:bg-amber-400 transition-colors cursor-pointer"
-                        >
-                          <ExternalLink size={14} />
-                          Live Site
-                        </span>
-                        <span className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-lg text-xs font-semibold text-black">
-                          View Details
-                          <ArrowUpRight size={14} />
-                        </span>
+                    {/* Stats Badge */}
+                    <div className="absolute top-6 right-6">
+                      <div className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
+                        <span className="text-sm text-white font-bold">{project.stats}</span>
                       </div>
+                    </div>
+
+                    {/* Action Buttons - Bottom */}
+                    <div className="absolute bottom-6 left-6 right-6 flex gap-3">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-white rounded-xl text-sm font-semibold text-gray-900 hover:bg-amber-400 transition-colors"
+                      >
+                        <ExternalLink size={16} />
+                        Visit Live Site
+                      </a>
+                      <Link
+                        href={`/projects/${project.id}`}
+                        className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-black/30 backdrop-blur-sm rounded-xl text-sm font-semibold text-white hover:bg-black/50 transition-colors"
+                      >
+                        View Details
+                        <ArrowUpRight size={16} />
+                      </Link>
                     </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-5">
-                    <div className="flex items-start justify-between gap-3 mb-3">
-                      <div className={`p-2.5 rounded-xl bg-gradient-to-r ${project.gradient} text-white shadow-lg`}>
-                        <project.icon size={20} />
+                  {/* Content - Right Side */}
+                  <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className={`p-3 rounded-2xl bg-gradient-to-r ${project.gradient} text-white shadow-lg`}>
+                        <project.icon size={28} />
                       </div>
-                      <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
-                        {project.stats}
-                      </span>
+                      <div>
+                        <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors">
+                          {project.title}
+                        </h3>
+                      </div>
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
+                    
+                    <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                       {project.description}
                     </p>
-                  </div>
 
-                  {/* Bottom Glow */}
-                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                    {/* Features */}
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">Key Features</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.features.map((feature) => (
+                          <span key={feature} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/10 text-amber-700 dark:text-amber-400 rounded-lg text-sm font-medium">
+                            <CheckCircle size={14} />
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Tech Stack */}
+                    <div>
+                      <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">Tech Stack</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((t) => (
+                          <span key={t} className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </Link>
+
+                {/* Bottom Glow */}
+                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
+              </div>
             </motion.div>
           ))}
         </div>
