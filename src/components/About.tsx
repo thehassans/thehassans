@@ -123,9 +123,14 @@ export default function About() {
                     <h3 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">
                       Bachelor in Artificial Intelligence
                     </h3>
-                    <p className="text-sm sm:text-base text-amber-700 dark:text-amber-400 font-medium">
+                    <a 
+                      href="https://tuf.edu.pk" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-sm sm:text-base text-amber-700 dark:text-amber-400 font-medium hover:underline hover:text-amber-600 dark:hover:text-amber-300 transition-colors"
+                    >
                       The University of Faisalabad
-                    </p>
+                    </a>
                   </div>
                 </div>
 

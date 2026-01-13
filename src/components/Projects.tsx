@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowUpRight, ShoppingCart, Cloud, Plane, Sparkles, Bot } from 'lucide-react'
+import { ArrowUpRight, ShoppingCart, Cloud, Plane, Sparkles, Bot, Gamepad2 } from 'lucide-react'
 import Link from 'next/link'
 
 const projects = [
@@ -14,6 +14,14 @@ const projects = [
     link: "https://sitesgptbot.com",
     icon: Bot,
     stats: "FREE AI Bot",
+  },
+  {
+    id: "old-arcade",
+    title: "Old Arcade",
+    description: "Gaming products e-commerce platform with consoles & peripherals",
+    link: "https://old-arcade.com",
+    icon: Gamepad2,
+    stats: "500+ Products",
   },
   {
     id: "buysial",
