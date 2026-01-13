@@ -7,11 +7,11 @@ import { useTheme } from 'next-themes'
 import Link from 'next/link'
 
 const navItems = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/#home' },
+  { name: 'About', href: '/#about' },
+  { name: 'Skills', href: '/#skills' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Contact', href: '/#contact' },
 ]
 
 export default function Navbar() {
@@ -110,7 +110,7 @@ export default function Navbar() {
 
               {/* CTA Button */}
               <motion.a
-                href="#contact"
+                href="/#contact"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="hidden md:block px-5 py-2 text-sm font-semibold text-black bg-gradient-to-r from-amber-400 to-yellow-300 rounded-full hover:shadow-lg hover:shadow-amber-500/20 transition-shadow"
@@ -161,7 +161,7 @@ export default function Navbar() {
                 </motion.a>
               ))}
               <motion.a
-                href="#contact"
+                href="/#contact"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.25 }}
