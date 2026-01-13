@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Loader2, CheckCircle, ArrowUpRight, Sparkles } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Loader2, CheckCircle, ArrowUpRight, Sparkles, MessageCircle } from 'lucide-react'
 
 export default function Contact() {
   const ref = useRef(null)
@@ -43,8 +43,14 @@ export default function Contact() {
     {
       icon: Phone,
       label: "Phone",
-      value: "+92 303 9948684",
-      href: "tel:+923039948684"
+      value: "+966 596 775 485",
+      href: "tel:+966596775485"
+    },
+    {
+      icon: MessageCircle,
+      label: "WhatsApp",
+      value: "+966 596 775 485",
+      href: "https://wa.me/966596775485"
     },
     {
       icon: Mail,
