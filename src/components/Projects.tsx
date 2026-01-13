@@ -44,7 +44,7 @@ const projects = [
     bgGradient: "from-amber-600 via-yellow-600 to-amber-700",
     features: ["Multi-country ops", "WhatsApp integration", "Role-based access"],
     tech: ["React", "Node.js", "MongoDB", "WhatsApp API"],
-    allowsIframe: true,
+    allowsIframe: false,
   },
   {
     id: "magnetic-clouds",
@@ -57,7 +57,7 @@ const projects = [
     bgGradient: "from-cyan-600 via-blue-600 to-cyan-700",
     features: ["Nobot AI chatbots", "Web hosting", "SSL & Security"],
     tech: ["Next.js", "AWS", "Docker", "AI/ML"],
-    allowsIframe: true,
+    allowsIframe: false,
   },
   {
     id: "explore-holidays",
@@ -70,7 +70,7 @@ const projects = [
     bgGradient: "from-emerald-600 via-teal-600 to-emerald-700",
     features: ["Hotel booking", "Car rental", "Tour packages"],
     tech: ["Next.js", "Tailwind", "Stripe", "Google Maps"],
-    allowsIframe: true,
+    allowsIframe: false,
   }
 ]
 
