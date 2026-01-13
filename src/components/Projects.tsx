@@ -3,10 +3,18 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowUpRight, ShoppingCart, Cloud, Plane, Sparkles } from 'lucide-react'
+import { ArrowUpRight, ShoppingCart, Cloud, Plane, Sparkles, Bot } from 'lucide-react'
 import Link from 'next/link'
 
 const projects = [
+  {
+    id: "ai-smartbot",
+    title: "AI Smartbot",
+    description: "Instant AI chatbot for websites - auto-learns from your business",
+    link: "https://sitesgptbot.com",
+    icon: Bot,
+    stats: "FREE AI Bot",
+  },
   {
     id: "buysial",
     title: "Buysial Commerce",
