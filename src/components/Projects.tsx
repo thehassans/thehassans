@@ -57,7 +57,7 @@ const projects = [
     bgGradient: "from-cyan-600 via-blue-600 to-cyan-700",
     features: ["Nobot AI chatbots", "Web hosting", "SSL & Security"],
     tech: ["Next.js", "AWS", "Docker", "AI/ML"],
-    allowsIframe: false,
+    allowsIframe: true,
   },
   {
     id: "explore-holidays",
@@ -70,7 +70,7 @@ const projects = [
     bgGradient: "from-emerald-600 via-teal-600 to-emerald-700",
     features: ["Hotel booking", "Car rental", "Tour packages"],
     tech: ["Next.js", "Tailwind", "Stripe", "Google Maps"],
-    allowsIframe: false,
+    allowsIframe: true,
   }
 ]
 
@@ -135,9 +135,9 @@ export default function Projects() {
                     
                     {project.allowsIframe ? (
                       /* Live iframe Preview */
-                      <div className="absolute inset-0">
+                      <div className="absolute inset-0 flex flex-col">
                         {/* Browser Chrome */}
-                        <div className="bg-gray-900 px-3 py-2 flex items-center gap-2">
+                        <div className="bg-gray-900 px-3 py-2 flex items-center gap-2 flex-shrink-0">
                           <div className="flex gap-1.5">
                             <div className="w-3 h-3 rounded-full bg-red-500" />
                             <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -149,14 +149,15 @@ export default function Projects() {
                             </div>
                           </div>
                         </div>
-                        {/* iframe */}
-                        <iframe
-                          src={project.link}
-                          className="w-full h-[calc(100%-36px)] bg-white"
-                          title={`${project.title} Live Preview`}
-                          loading="lazy"
-                          sandbox="allow-scripts allow-same-origin"
-                        />
+                        {/* Scaled iframe container */}
+                        <div className="flex-1 overflow-hidden relative">
+                          <iframe
+                            src={project.link}
+                            className="absolute top-0 left-0 w-[200%] h-[200%] origin-top-left scale-50 bg-white"
+                            title={`${project.title} Live Preview`}
+                            loading="lazy"
+                          />
+                        </div>
                       </div>
                     ) : (
                       /* Premium Placeholder for sites that block iframes */
