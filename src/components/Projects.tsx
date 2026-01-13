@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowUpRight, ExternalLink, ShoppingCart, Cloud, Plane, Sparkles, Bot, Gamepad2 } from 'lucide-react'
+import { ArrowUpRight, ExternalLink, ShoppingCart, Cloud, Plane, Sparkles, Bot, Gamepad2, Globe } from 'lucide-react'
 import Link from 'next/link'
 
 const projects = [
@@ -15,6 +15,7 @@ const projects = [
     icon: Bot,
     stats: "FREE AI Bot",
     gradient: "from-purple-500 to-indigo-500",
+    bgGradient: "from-purple-600 via-indigo-600 to-purple-700",
   },
   {
     id: "old-arcade",
@@ -24,6 +25,7 @@ const projects = [
     icon: Gamepad2,
     stats: "500+ Products",
     gradient: "from-red-500 to-orange-500",
+    bgGradient: "from-red-600 via-orange-600 to-red-700",
   },
   {
     id: "buysial",
@@ -33,6 +35,7 @@ const projects = [
     icon: ShoppingCart,
     stats: "13 Countries",
     gradient: "from-amber-500 to-yellow-500",
+    bgGradient: "from-amber-600 via-yellow-600 to-amber-700",
   },
   {
     id: "magnetic-clouds",
@@ -42,6 +45,7 @@ const projects = [
     icon: Cloud,
     stats: "13+ Services",
     gradient: "from-cyan-500 to-blue-500",
+    bgGradient: "from-cyan-600 via-blue-600 to-cyan-700",
   },
   {
     id: "explore-holidays",
@@ -51,6 +55,7 @@ const projects = [
     icon: Plane,
     stats: "Full Service",
     gradient: "from-emerald-500 to-teal-500",
+    bgGradient: "from-emerald-600 via-teal-600 to-emerald-700",
   }
 ]
 
@@ -91,7 +96,7 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Projects Grid with Live Previews */}
+        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div
@@ -101,75 +106,73 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
               className="group"
             >
-              <div className="relative h-full bg-white dark:bg-[#111] rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/10">
-                {/* Live Preview */}
-                <div className="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-900">
-                  {/* Browser Header */}
-                  <div className="absolute top-0 left-0 right-0 z-10 bg-gray-200 dark:bg-gray-800 px-3 py-2 flex items-center gap-2">
-                    <div className="flex gap-1">
-                      <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+              <Link href={`/projects/${project.id}`}>
+                <div className="relative h-full bg-white dark:bg-[#111] rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/10">
+                  {/* Preview Area */}
+                  <div className={`relative h-44 overflow-hidden bg-gradient-to-br ${project.bgGradient}`}>
+                    {/* Decorative Pattern */}
+                    <div className="absolute inset-0 opacity-10">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,white_1px,transparent_1px)] bg-[size:20px_20px]" />
                     </div>
-                    <div className="flex-1 mx-2">
-                      <div className="bg-white dark:bg-gray-700 rounded px-2 py-0.5 text-[10px] text-gray-500 dark:text-gray-400 text-center truncate">
-                        {project.link.replace('https://', '')}
+                    
+                    {/* Large Icon */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <project.icon size={80} className="text-white/20" strokeWidth={1} />
+                    </div>
+                    
+                    {/* URL Badge */}
+                    <div className="absolute top-4 left-4 right-4">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-black/20 backdrop-blur-sm rounded-full">
+                        <Globe size={12} className="text-white/80" />
+                        <span className="text-xs text-white/90 font-medium truncate">
+                          {project.link.replace('https://', '')}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="flex gap-3">
+                        <span
+                          onClick={(e) => {
+                            e.preventDefault()
+                            window.open(project.link, '_blank')
+                          }}
+                          className="flex items-center gap-1.5 px-4 py-2 bg-white rounded-lg text-xs font-semibold text-gray-900 hover:bg-amber-400 transition-colors cursor-pointer"
+                        >
+                          <ExternalLink size={14} />
+                          Live Site
+                        </span>
+                        <span className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-lg text-xs font-semibold text-black">
+                          View Details
+                          <ArrowUpRight size={14} />
+                        </span>
                       </div>
                     </div>
                   </div>
-                  {/* iframe Preview */}
-                  <iframe
-                    src={project.link}
-                    className="w-full h-full pt-8 pointer-events-none"
-                    title={`${project.title} Preview`}
-                    loading="lazy"
-                  />
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  {/* Quick Actions on Hover */}
-                  <div className="absolute bottom-3 left-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-white/90 dark:bg-black/80 backdrop-blur-sm rounded-lg text-xs font-medium text-gray-900 dark:text-white hover:bg-amber-500 hover:text-black transition-colors"
-                    >
-                      <ExternalLink size={12} />
-                      Live Site
-                    </a>
-                    <Link
-                      href={`/projects/${project.id}`}
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-lg text-xs font-medium text-black hover:shadow-lg transition-shadow"
-                    >
-                      Details
-                      <ArrowUpRight size={12} />
-                    </Link>
-                  </div>
-                </div>
 
-                {/* Content */}
-                <Link href={`/projects/${project.id}`} className="block p-5">
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <div className={`p-2.5 rounded-xl bg-gradient-to-r ${project.gradient} text-white shadow-lg`}>
-                      <project.icon size={20} />
+                  {/* Content */}
+                  <div className="p-5">
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div className={`p-2.5 rounded-xl bg-gradient-to-r ${project.gradient} text-white shadow-lg`}>
+                        <project.icon size={20} />
+                      </div>
+                      <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                        {project.stats}
+                      </span>
                     </div>
-                    <span className="px-2.5 py-1 text-[10px] font-semibold rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
-                      {project.stats}
-                    </span>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
+                      {project.description}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1.5 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
-                    {project.description}
-                  </p>
-                </Link>
 
-                {/* Bottom Glow */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
-              </div>
+                  {/* Bottom Glow */}
+                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>
