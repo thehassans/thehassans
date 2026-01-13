@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
+import { ArrowDown, Github, Linkedin, Mail, Sparkles, MessageCircle } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Hero() {
@@ -165,6 +165,7 @@ export default function Hero() {
               { icon: Github, href: 'https://github.com/thehassans', label: 'GitHub' },
               { icon: Linkedin, href: 'https://linkedin.com/in/hassanscode', label: 'LinkedIn' },
               { icon: Mail, href: 'mailto:hassan.sarwar21@gmail.com', label: 'Email' },
+              { icon: MessageCircle, href: 'https://wa.me/966596775485', label: 'WhatsApp' },
             ].map((social) => (
               <motion.a
                 key={social.label}
