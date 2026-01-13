@@ -69,7 +69,8 @@ export default function Contact() {
   const socialLinks = [
     { icon: Github, href: "https://github.com/thehassans", label: "GitHub" },
     { icon: Linkedin, href: "https://linkedin.com/in/hassanscode", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:hassan.sarwar21@gmail.com", label: "Email" }
+    { icon: Mail, href: "mailto:hassan.sarwar21@gmail.com", label: "Email" },
+    { icon: MessageCircle, href: "https://wa.me/966596775485", label: "WhatsApp" }
   ]
 
   return (
