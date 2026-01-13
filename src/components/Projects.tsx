@@ -120,52 +120,60 @@ export default function Projects() {
                 <div className="grid lg:grid-cols-2 gap-0">
                   {/* Preview Area - Left Side */}
                   <div className={`relative h-64 sm:h-80 lg:h-auto lg:min-h-[320px] overflow-hidden bg-gradient-to-br ${project.bgGradient}`}>
-                    {/* Decorative Pattern */}
-                    <div className="absolute inset-0 opacity-10">
+                    {/* Gradient Fallback Background */}
+                    <div className="absolute inset-0 opacity-30">
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,white_1px,transparent_1px)] bg-[size:24px_24px]" />
                     </div>
-                    
-                    {/* Large Icon */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <project.icon size={140} className="text-white/15" strokeWidth={0.8} />
+                      <project.icon size={100} className="text-white/10" strokeWidth={0.8} />
                     </div>
                     
-                    {/* URL Badge */}
-                    <div className="absolute top-6 left-6">
-                      <div className="inline-flex items-center gap-2 px-4 py-2 bg-black/30 backdrop-blur-sm rounded-full">
-                        <Globe size={14} className="text-white/90" />
-                        <span className="text-sm text-white font-medium">
-                          {project.link.replace('https://', '')}
-                        </span>
+                    {/* Live iframe Preview */}
+                    <div className="absolute inset-0">
+                      {/* Browser Chrome */}
+                      <div className="bg-gray-900 px-3 py-2 flex items-center gap-2">
+                        <div className="flex gap-1.5">
+                          <div className="w-3 h-3 rounded-full bg-red-500" />
+                          <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                          <div className="w-3 h-3 rounded-full bg-green-500" />
+                        </div>
+                        <div className="flex-1 mx-2">
+                          <div className="bg-gray-800 rounded-md px-3 py-1 text-xs text-gray-400 text-center truncate">
+                            {project.link.replace('https://', '')}
+                          </div>
+                        </div>
                       </div>
+                      {/* iframe */}
+                      <iframe
+                        src={project.link}
+                        className="w-full h-[calc(100%-36px)] bg-white"
+                        title={`${project.title} Live Preview`}
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin"
+                      />
                     </div>
 
-                    {/* Stats Badge */}
-                    <div className="absolute top-6 right-6">
-                      <div className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full">
-                        <span className="text-sm text-white font-bold">{project.stats}</span>
+                    {/* Hover Overlay with Actions */}
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="flex gap-3">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="flex items-center gap-2 px-6 py-3 bg-white rounded-xl text-sm font-semibold text-gray-900 hover:bg-amber-400 transition-colors"
+                        >
+                          <ExternalLink size={16} />
+                          Visit Live Site
+                        </a>
+                        <Link
+                          href={`/projects/${project.id}`}
+                          className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-xl text-sm font-semibold text-black hover:shadow-lg transition-shadow"
+                        >
+                          View Details
+                          <ArrowUpRight size={16} />
+                        </Link>
                       </div>
-                    </div>
-
-                    {/* Action Buttons - Bottom */}
-                    <div className="absolute bottom-6 left-6 right-6 flex gap-3">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-white rounded-xl text-sm font-semibold text-gray-900 hover:bg-amber-400 transition-colors"
-                      >
-                        <ExternalLink size={16} />
-                        Visit Live Site
-                      </a>
-                      <Link
-                        href={`/projects/${project.id}`}
-                        className="flex-1 flex items-center justify-center gap-2 px-5 py-3 bg-black/30 backdrop-blur-sm rounded-xl text-sm font-semibold text-white hover:bg-black/50 transition-colors"
-                      >
-                        View Details
-                        <ArrowUpRight size={16} />
-                      </Link>
                     </div>
                   </div>
 
