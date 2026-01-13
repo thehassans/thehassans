@@ -18,6 +18,7 @@ const projects = [
     bgGradient: "from-purple-600 via-indigo-600 to-purple-700",
     features: ["Auto-learns from website", "24/7 Support", "Human handoff mode"],
     tech: ["React", "OpenAI", "LangChain", "RAG"],
+    allowsIframe: true,
   },
   {
     id: "old-arcade",
@@ -30,6 +31,7 @@ const projects = [
     bgGradient: "from-red-600 via-orange-600 to-red-700",
     features: ["Gaming consoles", "PC components", "Secure payments"],
     tech: ["Next.js", "MongoDB", "Stripe", "Redux"],
+    allowsIframe: true,
   },
   {
     id: "buysial",
@@ -42,6 +44,7 @@ const projects = [
     bgGradient: "from-amber-600 via-yellow-600 to-amber-700",
     features: ["Multi-country ops", "WhatsApp integration", "Role-based access"],
     tech: ["React", "Node.js", "MongoDB", "WhatsApp API"],
+    allowsIframe: true,
   },
   {
     id: "magnetic-clouds",
@@ -54,6 +57,7 @@ const projects = [
     bgGradient: "from-cyan-600 via-blue-600 to-cyan-700",
     features: ["Nobot AI chatbots", "Web hosting", "SSL & Security"],
     tech: ["Next.js", "AWS", "Docker", "AI/ML"],
+    allowsIframe: false,
   },
   {
     id: "explore-holidays",
@@ -66,6 +70,7 @@ const projects = [
     bgGradient: "from-emerald-600 via-teal-600 to-emerald-700",
     features: ["Hotel booking", "Car rental", "Tour packages"],
     tech: ["Next.js", "Tailwind", "Stripe", "Google Maps"],
+    allowsIframe: false,
   }
 ]
 
@@ -128,30 +133,67 @@ export default function Projects() {
                       <project.icon size={100} className="text-white/10" strokeWidth={0.8} />
                     </div>
                     
-                    {/* Live iframe Preview */}
-                    <div className="absolute inset-0">
-                      {/* Browser Chrome */}
-                      <div className="bg-gray-900 px-3 py-2 flex items-center gap-2">
-                        <div className="flex gap-1.5">
-                          <div className="w-3 h-3 rounded-full bg-red-500" />
-                          <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                          <div className="w-3 h-3 rounded-full bg-green-500" />
-                        </div>
-                        <div className="flex-1 mx-2">
-                          <div className="bg-gray-800 rounded-md px-3 py-1 text-xs text-gray-400 text-center truncate">
-                            {project.link.replace('https://', '')}
+                    {project.allowsIframe ? (
+                      /* Live iframe Preview */
+                      <div className="absolute inset-0">
+                        {/* Browser Chrome */}
+                        <div className="bg-gray-900 px-3 py-2 flex items-center gap-2">
+                          <div className="flex gap-1.5">
+                            <div className="w-3 h-3 rounded-full bg-red-500" />
+                            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                            <div className="w-3 h-3 rounded-full bg-green-500" />
+                          </div>
+                          <div className="flex-1 mx-2">
+                            <div className="bg-gray-800 rounded-md px-3 py-1 text-xs text-gray-400 text-center truncate">
+                              {project.link.replace('https://', '')}
+                            </div>
                           </div>
                         </div>
+                        {/* iframe */}
+                        <iframe
+                          src={project.link}
+                          className="w-full h-[calc(100%-36px)] bg-white"
+                          title={`${project.title} Live Preview`}
+                          loading="lazy"
+                          sandbox="allow-scripts allow-same-origin"
+                        />
                       </div>
-                      {/* iframe */}
-                      <iframe
-                        src={project.link}
-                        className="w-full h-[calc(100%-36px)] bg-white"
-                        title={`${project.title} Live Preview`}
-                        loading="lazy"
-                        sandbox="allow-scripts allow-same-origin"
-                      />
-                    </div>
+                    ) : (
+                      /* Premium Placeholder for sites that block iframes */
+                      <div className="absolute inset-0 flex flex-col">
+                        {/* Browser Chrome */}
+                        <div className="bg-gray-900 px-3 py-2 flex items-center gap-2">
+                          <div className="flex gap-1.5">
+                            <div className="w-3 h-3 rounded-full bg-red-500" />
+                            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                            <div className="w-3 h-3 rounded-full bg-green-500" />
+                          </div>
+                          <div className="flex-1 mx-2">
+                            <div className="bg-gray-800 rounded-md px-3 py-1 text-xs text-gray-400 text-center truncate">
+                              {project.link.replace('https://', '')}
+                            </div>
+                          </div>
+                        </div>
+                        {/* Content Preview */}
+                        <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
+                          <div className={`p-4 rounded-2xl bg-white/10 backdrop-blur-sm mb-4`}>
+                            <project.icon size={48} className="text-white" />
+                          </div>
+                          <h4 className="text-xl font-bold text-white mb-2">{project.title}</h4>
+                          <p className="text-white/70 text-sm mb-4 max-w-xs">Click to view the live website</p>
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full text-sm font-semibold text-gray-900 hover:bg-amber-400 transition-colors"
+                          >
+                            <Globe size={16} />
+                            Open Live Site
+                          </a>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Hover Overlay with Actions */}
                     <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
