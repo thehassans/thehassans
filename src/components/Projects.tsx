@@ -160,10 +160,10 @@ export default function Projects() {
                         </div>
                       </div>
                     ) : (
-                      /* Premium Placeholder for sites that block iframes */
+                      /* Screenshot Preview for sites that block iframes */
                       <div className="absolute inset-0 flex flex-col">
                         {/* Browser Chrome */}
-                        <div className="bg-gray-900 px-3 py-2 flex items-center gap-2">
+                        <div className="bg-gray-900 px-3 py-2 flex items-center gap-2 flex-shrink-0">
                           <div className="flex gap-1.5">
                             <div className="w-3 h-3 rounded-full bg-red-500" />
                             <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -175,23 +175,14 @@ export default function Projects() {
                             </div>
                           </div>
                         </div>
-                        {/* Content Preview */}
-                        <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
-                          <div className={`p-4 rounded-2xl bg-white/10 backdrop-blur-sm mb-4`}>
-                            <project.icon size={48} className="text-white" />
-                          </div>
-                          <h4 className="text-xl font-bold text-white mb-2">{project.title}</h4>
-                          <p className="text-white/70 text-sm mb-4 max-w-xs">Click to view the live website</p>
-                          <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full text-sm font-semibold text-gray-900 hover:bg-amber-400 transition-colors"
-                          >
-                            <Globe size={16} />
-                            Open Live Site
-                          </a>
+                        {/* Screenshot Preview */}
+                        <div className="flex-1 overflow-hidden relative bg-gray-900">
+                          <img
+                            src={`https://image.thum.io/get/width/800/crop/600/${project.link}`}
+                            alt={`${project.title} Preview`}
+                            className="w-full h-full object-cover object-top"
+                            loading="lazy"
+                          />
                         </div>
                       </div>
                     )}
