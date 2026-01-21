@@ -1,55 +1,42 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { ArrowLeft, ExternalLink, Gamepad2, Globe, ShoppingCart, CreditCard, Package, Users, Star, Truck, Shield, Headphones, Monitor, Cpu, Mouse, Keyboard } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Globe, ShieldCheck, Zap, Layout, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 
-const productCategories = [
-  { icon: Gamepad2, title: "Gaming Consoles", description: "PlayStation, Xbox, Nintendo Switch & more" },
-  { icon: Monitor, title: "Gaming Monitors", description: "High refresh rate displays for competitive gaming" },
-  { icon: Headphones, title: "Gaming Headsets", description: "Premium audio gear for immersive experience" },
-  { icon: Mouse, title: "Gaming Mice", description: "Precision mice for FPS and MOBA games" },
-  { icon: Keyboard, title: "Mechanical Keyboards", description: "RGB keyboards with custom switches" },
-  { icon: Cpu, title: "PC Components", description: "GPUs, CPUs, RAM & gaming hardware" },
-]
-
 const keyFeatures = [
-  { icon: ShoppingCart, title: "Easy Shopping", description: "Intuitive cart and checkout experience" },
-  { icon: CreditCard, title: "Secure Payments", description: "Multiple payment options with encryption" },
-  { icon: Package, title: "Product Catalog", description: "Extensive gaming products collection" },
-  { icon: Truck, title: "Fast Shipping", description: "Quick delivery to your doorstep" },
-  { icon: Shield, title: "Buyer Protection", description: "Secure transactions and returns" },
-  { icon: Star, title: "Product Reviews", description: "Customer ratings and reviews" },
-  { icon: Users, title: "User Accounts", description: "Order history and wishlist management" },
-  { icon: Headphones, title: "Customer Support", description: "Dedicated support for gamers" },
+  { icon: Layout, title: "Premium UI/UX", description: "Modern layout with clean typography and conversion-focused sections" },
+  { icon: Zap, title: "Fast Performance", description: "Optimized experience with smooth transitions and responsive behavior" },
+  { icon: ShieldCheck, title: "Trust & Branding", description: "Clear messaging, credibility design patterns, and strong brand presence" },
+  { icon: Sparkles, title: "Polished Animations", description: "Subtle motion to enhance the feel without distracting the user" },
 ]
 
 const techStack = [
-  "React", "Next.js", "Node.js", "MongoDB", "Express.js",
-  "Tailwind CSS", "Stripe", "Redux", "AWS", "Cloudinary"
+  "Next.js",
+  "React",
+  "Tailwind CSS",
+  "Framer Motion",
+  "Vercel",
 ]
 
-export default function OldArcadeProject() {
+export default function KhayyatosProject() {
   return (
     <main className="min-h-screen bg-white dark:bg-[#0d0d0d]">
-      {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-white to-yellow-50/50 dark:from-[#0d0d0d] dark:via-[#0d0d0d] dark:to-[#111111]" />
-        
-        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-50/50 via-white to-purple-50/50 dark:from-[#0d0d0d] dark:via-[#0d0d0d] dark:to-[#111111]" />
+
         <motion.div
           animate={{ scale: [1, 1.2, 1], x: [0, 50, 0] }}
           transition={{ duration: 20, repeat: Infinity }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-fuchsia-400/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{ scale: [1.2, 1, 1.2], x: [0, -50, 0] }}
           transition={{ duration: 25, repeat: Infinity }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl"
         />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -70,28 +57,28 @@ export default function OldArcadeProject() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex p-4 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-500 text-black mb-6">
-                <Gamepad2 size={40} />
+              <div className="inline-flex p-4 rounded-2xl bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white mb-6">
+                <Globe size={40} />
               </div>
-              
+
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-                Old Arcade
+                Khayyatos
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-amber-600 dark:text-amber-400 font-semibold mb-6">
-                Gaming Products E-Commerce Platform
+              <p className="text-lg sm:text-xl md:text-2xl text-fuchsia-600 dark:text-fuchsia-400 font-semibold mb-6">
+                Premium Brand Website
               </p>
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-                A comprehensive <span className="font-semibold text-amber-600 dark:text-amber-400">gaming e-commerce platform</span> offering a wide range of gaming products including consoles, peripherals, accessories, and PC components. Built for gamers, by gamers.
+                A premium brand website designed to showcase services, build trust, and drive conversions with a modern, responsive user experience.
               </p>
 
               <div className="flex flex-wrap gap-4">
                 <motion.a
-                  href="https://old-arcade.com"
+                  href="https://khayyatos.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-black font-semibold rounded-2xl shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 transition-shadow"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-fuchsia-500 to-purple-500 text-white font-semibold rounded-2xl shadow-lg shadow-fuchsia-500/20 hover:shadow-fuchsia-500/35 transition-shadow"
                 >
                   <Globe size={20} />
                   Visit Live Site
@@ -100,14 +87,13 @@ export default function OldArcadeProject() {
               </div>
             </motion.div>
 
-            {/* Live Preview */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-amber-500/20 border border-gray-200 dark:border-gray-800">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-fuchsia-500/10 border border-gray-200 dark:border-gray-800">
                 <div className="bg-gray-100 dark:bg-gray-800 px-4 py-2 flex items-center gap-2">
                   <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500" />
@@ -116,32 +102,22 @@ export default function OldArcadeProject() {
                   </div>
                   <div className="flex-1 mx-4">
                     <div className="bg-white dark:bg-gray-700 rounded-md px-3 py-1 text-xs text-gray-500 dark:text-gray-400 text-center">
-                      old-arcade.com
+                      khayyatos.com
                     </div>
                   </div>
                 </div>
                 <iframe
-                  src="https://old-arcade.com"
-                  className="w-full h-64 sm:h-80 lg:h-[400px]"
-                  title="Old Arcade Live Preview"
+                  src="https://khayyatos.com"
+                  className="w-full h-64 sm:h-80 lg:h-[420px]"
+                  title="Khayyatos Live Preview"
+                  loading="lazy"
                 />
-              </div>
-              
-              {/* Stats Badges */}
-              <div className="absolute -bottom-4 -left-4 px-4 py-2 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-xl text-black shadow-lg">
-                <div className="text-2xl font-bold">500+</div>
-                <div className="text-xs font-medium">Products</div>
-              </div>
-              <div className="absolute -top-4 -right-4 px-4 py-2 bg-white dark:bg-[#1a1a1a] rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-                <div className="text-lg font-bold text-amber-600 dark:text-amber-400">Gaming</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">E-Commerce</div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Product Categories Section */}
       <section className="py-16 sm:py-20 bg-gray-50 dark:bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -152,53 +128,10 @@ export default function OldArcadeProject() {
             className="text-center mb-12 sm:mb-16"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Product Categories
+              Key Features
             </h2>
             <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Everything a gamer needs in one place
-            </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {productCategories.map((category, index) => (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group p-4 sm:p-6 bg-white dark:bg-[#1a1a1a] rounded-2xl border border-gray-100 dark:border-gray-800 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-black mb-4 group-hover:scale-110 transition-transform">
-                  <category.icon size={24} />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  {category.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-                  {category.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Key Features Section */}
-      <section className="py-16 sm:py-20 bg-white dark:bg-[#0d0d0d]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12 sm:mb-16"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Platform Features
-            </h2>
-            <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Built with the best e-commerce capabilities
+              Built for premium presentation and conversion-focused storytelling
             </p>
           </motion.div>
 
@@ -210,9 +143,9 @@ export default function OldArcadeProject() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="group p-4 sm:p-5 bg-gray-50 dark:bg-[#1a1a1a] rounded-xl border border-gray-100 dark:border-gray-800 hover:border-amber-500/50 transition-colors"
+                className="group p-4 sm:p-5 bg-white dark:bg-[#1a1a1a] rounded-xl border border-gray-100 dark:border-gray-800 hover:border-fuchsia-500/40 transition-colors"
               >
-                <div className="inline-flex p-2 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 mb-3 group-hover:scale-110 transition-transform">
+                <div className="inline-flex p-2 rounded-lg bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 mb-3 group-hover:scale-110 transition-transform">
                   <feature.icon size={20} />
                 </div>
                 <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-1">
@@ -227,8 +160,7 @@ export default function OldArcadeProject() {
         </div>
       </section>
 
-      {/* Tech Stack */}
-      <section className="py-16 sm:py-20 bg-gray-50 dark:bg-[#0a0a0a]">
+      <section className="py-16 sm:py-20 bg-white dark:bg-[#0d0d0d]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -241,7 +173,7 @@ export default function OldArcadeProject() {
               Technology Stack
             </h2>
             <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400">
-              Built with modern web technologies
+              Modern tools for a high-quality experience
             </p>
           </motion.div>
 
@@ -255,7 +187,7 @@ export default function OldArcadeProject() {
             {techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-lg font-medium rounded-lg sm:rounded-xl bg-white dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 hover:bg-amber-100 dark:hover:bg-amber-900/20 hover:text-amber-700 dark:hover:text-amber-300 transition-colors border border-gray-100 dark:border-gray-800"
+                className="px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-lg font-medium rounded-lg sm:rounded-xl bg-gray-50 dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 hover:bg-amber-100 dark:hover:bg-amber-900/20 hover:text-amber-700 dark:hover:text-amber-300 transition-colors border border-gray-100 dark:border-gray-800"
               >
                 {tech}
               </span>
@@ -264,7 +196,6 @@ export default function OldArcadeProject() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-16 sm:py-20 bg-gradient-to-r from-amber-500 to-yellow-500">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
@@ -274,27 +205,26 @@ export default function OldArcadeProject() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
-              Level Up Your Gaming Setup
+              Visit Khayyatos
             </h2>
             <p className="text-base sm:text-xl text-white/80 mb-6 sm:mb-8">
-              Explore our collection of premium gaming products and accessories.
+              Explore the full experience on the live website.
             </p>
             <motion.a
-              href="https://old-arcade.com"
+              href="https://khayyatos.com"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-black text-amber-400 font-semibold rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-sm sm:text-base"
             >
-              Shop Now at Old Arcade
+              Open Khayyatos.com
               <ExternalLink size={18} />
             </motion.a>
           </motion.div>
         </div>
       </section>
 
-      {/* Footer Navigation */}
       <section className="py-12 bg-gray-50 dark:bg-[#0a0a0a] border-t border-gray-200 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
@@ -307,10 +237,10 @@ export default function OldArcadeProject() {
             </Link>
             <div className="flex gap-4">
               <Link
-                href="/projects/khayyatos"
+                href="/projects/ai-smartbot"
                 className="text-amber-600 dark:text-amber-400 hover:underline font-medium"
               >
-                Next: Khayyatos →
+                Next: AI Smartbot →
               </Link>
             </div>
           </div>

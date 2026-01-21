@@ -308,10 +308,10 @@ export default function BuysialProject() {
             </Link>
             <div className="flex gap-4">
               <Link
-                href="/projects/magnetic-clouds"
+                href="/projects/old-arcade"
                 className="text-amber-600 dark:text-amber-400 hover:underline font-medium"
               >
-                Next: Magnetic Clouds →
+                Next: Old Arcade →
               </Link>
             </div>
           </div>

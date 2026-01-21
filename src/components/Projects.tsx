@@ -3,10 +3,26 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowUpRight, ExternalLink, ShoppingCart, Cloud, Plane, Sparkles, Bot, Gamepad2, Globe, CheckCircle } from 'lucide-react'
+import { ArrowUpRight, ExternalLink, ShoppingCart, Sparkles, Bot, Gamepad2, Globe, CheckCircle } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import Link from 'next/link'
 
-const projects = [
+type Project = {
+  id: string
+  title: string
+  description: string
+  link: string
+  icon: LucideIcon
+  stats: string
+  gradient: string
+  bgGradient: string
+  features: string[]
+  tech: string[]
+  allowsIframe: boolean
+  iframeScale?: number
+}
+
+const projects: Project[] = [
   {
     id: "ai-smartbot",
     title: "AI Smartbot",
@@ -44,33 +60,21 @@ const projects = [
     bgGradient: "from-amber-600 via-yellow-600 to-amber-700",
     features: ["Multi-country ops", "WhatsApp integration", "Role-based access"],
     tech: ["React", "Node.js", "MongoDB", "WhatsApp API"],
-    allowsIframe: false,
+    allowsIframe: true,
+    iframeScale: 0.6,
   },
   {
-    id: "magnetic-clouds",
-    title: "Magnet Clouds",
-    description: "A comprehensive cloud services company offering 13+ different services including cutting-edge AI solutions like Nobot AI for intelligent chatbots and Magnetic ShieldX for security.",
-    link: "https://magnetic-clouds.com",
-    icon: Cloud,
-    stats: "13+ Services",
-    gradient: "from-cyan-500 to-blue-500",
-    bgGradient: "from-cyan-600 via-blue-600 to-cyan-700",
-    features: ["Nobot AI chatbots", "Web hosting", "SSL & Security"],
-    tech: ["Next.js", "AWS", "Docker", "AI/ML"],
-    allowsIframe: false,
-  },
-  {
-    id: "explore-holidays",
-    title: "Explore Holidays",
-    description: "Complete travel agency website providing seamless travel experiences with hotel booking, car rental, and tour planning services with personalized recommendations.",
-    link: "https://exploreholidays.hassanscode.com",
-    icon: Plane,
-    stats: "Full Service",
-    gradient: "from-emerald-500 to-teal-500",
-    bgGradient: "from-emerald-600 via-teal-600 to-emerald-700",
-    features: ["Hotel booking", "Car rental", "Tour packages"],
-    tech: ["Next.js", "Tailwind", "Stripe", "Google Maps"],
-    allowsIframe: false,
+    id: "khayyatos",
+    title: "Khayyatos",
+    description: "A premium brand website designed to showcase services, build trust, and drive conversions with a modern, responsive user experience.",
+    link: "https://khayyatos.com",
+    icon: Globe,
+    stats: "Brand Site",
+    gradient: "from-fuchsia-500 to-purple-500",
+    bgGradient: "from-fuchsia-600 via-purple-600 to-fuchsia-700",
+    features: ["Modern UI", "Responsive design", "Fast performance"],
+    tech: ["Next.js", "Tailwind", "Framer Motion", "Vercel"],
+    allowsIframe: true,
   }
 ]
 
@@ -113,14 +117,18 @@ export default function Projects() {
 
         {/* Projects - One per row */}
         <div className="space-y-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-              className="group"
-            >
+          {projects.map((project, index) => {
+            const iframeScale = project.iframeScale ?? 0.5
+            const iframeSize = `${(1 / iframeScale) * 100}%`
+
+            return (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+                className="group"
+              >
               <div className="relative bg-white dark:bg-[#111] rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden hover:border-amber-500/50 dark:hover:border-amber-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-500/10">
                 <div className="grid lg:grid-cols-2 gap-0">
                   {/* Preview Area - Left Side */}
@@ -153,7 +161,13 @@ export default function Projects() {
                         <div className="flex-1 overflow-hidden relative">
                           <iframe
                             src={project.link}
-                            className="absolute top-0 left-0 w-[200%] h-[200%] origin-top-left scale-50 bg-white"
+                            className="absolute top-0 left-0 bg-white"
+                            style={{
+                              transform: `scale(${iframeScale})`,
+                              transformOrigin: 'top left',
+                              width: iframeSize,
+                              height: iframeSize,
+                            }}
                             title={`${project.title} Live Preview`}
                             loading="lazy"
                           />
@@ -258,8 +272,9 @@ export default function Projects() {
                 {/* Bottom Glow */}
                 <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity`} />
               </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            )
+          })}
         </div>
 
         {/* View All Link */}
