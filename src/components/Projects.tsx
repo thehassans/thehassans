@@ -35,7 +35,7 @@ const projects: Project[] = [
     bgGradient: "from-emerald-600 via-teal-600 to-emerald-700",
     features: ["HR Management", "Finance & Accounting", "Inventory Control"],
     tech: ["React", "Node.js", "MongoDB", "REST API"],
-    allowsIframe: false,
+    allowsIframe: true,
   },
   {
     id: "ai-smartbot",
@@ -88,7 +88,7 @@ const projects: Project[] = [
     bgGradient: "from-fuchsia-600 via-purple-600 to-fuchsia-700",
     features: ["Modern UI", "Responsive design", "Fast performance"],
     tech: ["Next.js", "Tailwind", "Framer Motion", "Vercel"],
-    allowsIframe: false,
+    allowsIframe: true,
   }
 ]
 
