@@ -106,13 +106,15 @@ export default function KhayyatosProject() {
                     </div>
                   </div>
                 </div>
-                <div className="w-full h-64 sm:h-80 lg:h-[420px] overflow-hidden">
-                  <img
-                    src="https://image.thum.io/get/width/800/crop/600/https://khayyatos.com"
-                    alt="Khayyatos Preview"
-                    className="w-full h-full object-cover object-top"
-                    loading="lazy"
-                  />
+                <div className="w-full h-64 sm:h-80 lg:h-[420px] overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600 via-purple-600 to-fuchsia-700">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px]" />
+                  </div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                    <Globe size={80} className="mb-4 opacity-90" strokeWidth={1.5} />
+                    <span className="text-3xl font-bold opacity-90">Khayyatos</span>
+                    <span className="text-lg opacity-70 mt-2">khayyatos.com</span>
+                  </div>
                 </div>
               </div>
             </motion.div>

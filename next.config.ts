@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: 'udemy-certificate.s3.amazonaws.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'image.thum.io',
+        pathname: '/**',
+      },
     ],
   },
 };

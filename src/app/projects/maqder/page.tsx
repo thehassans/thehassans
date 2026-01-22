@@ -121,13 +121,15 @@ export default function MaqderProject() {
                     </div>
                   </div>
                 </div>
-                <div className="relative aspect-video overflow-hidden bg-gray-900">
-                  <img
-                    src="https://image.thum.io/get/width/800/crop/600/https://maqder.com"
-                    alt="Maqder ERP Preview"
-                    className="w-full h-full object-cover object-top"
-                    loading="lazy"
-                  />
+                <div className="relative aspect-video overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px]" />
+                  </div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                    <Globe size={80} className="mb-4 opacity-90" strokeWidth={1.5} />
+                    <span className="text-3xl font-bold opacity-90">Maqder ERP</span>
+                    <span className="text-lg opacity-70 mt-2">maqder.com</span>
+                  </div>
                 </div>
               </div>
             </motion.div>

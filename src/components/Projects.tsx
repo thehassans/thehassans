@@ -208,13 +208,15 @@ export default function Projects() {
                           </div>
                         </div>
                         {/* Screenshot Preview */}
-                        <div className="flex-1 overflow-hidden relative bg-gray-900">
-                          <img
-                            src={`https://image.thum.io/get/width/800/crop/600/${project.link}`}
-                            alt={`${project.title} Preview`}
-                            className="w-full h-full object-cover object-top"
-                            loading="lazy"
-                          />
+                        <div className="flex-1 overflow-hidden relative">
+                          <div className={`absolute inset-0 bg-gradient-to-br ${project.bgGradient}`}>
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px]" />
+                          </div>
+                          <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                            <project.icon size={64} className="mb-4 opacity-90" strokeWidth={1.5} />
+                            <span className="text-2xl font-bold opacity-90">{project.title}</span>
+                            <span className="text-sm opacity-70 mt-1">{project.link.replace('https://', '')}</span>
+                          </div>
                         </div>
                       </div>
                     )}
