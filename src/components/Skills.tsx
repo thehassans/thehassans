@@ -8,6 +8,7 @@ import {
   Terminal, Globe, Server, Box, GitBranch, Layers, Workflow, FileJson,
   BarChart3, Table2, BookOpen, Container, Rocket, Settings
 } from 'lucide-react'
+import { useLanguage } from '@/context/LanguageProvider'
 
 const skillsWithIcons = [
   { name: "Python", icon: Code },
@@ -43,6 +44,7 @@ const skillsWithIcons = [
 export default function Skills() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { t } = useLanguage()
 
   return (
     <section id="skills" className="relative py-20 overflow-hidden">
@@ -62,10 +64,10 @@ export default function Skills() {
           className="text-center mb-12 px-4"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 text-sm font-medium mb-4">
-            Technical Expertise
+            {t('skills.badge')}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
-            Skills & Technologies
+            {t('skills.title')}
           </h2>
         </motion.div>
 

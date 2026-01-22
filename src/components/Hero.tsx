@@ -3,8 +3,11 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Github, Linkedin, Mail, Sparkles, MessageCircle } from 'lucide-react'
 import Image from 'next/image'
+import { useLanguage } from '@/context/LanguageProvider'
 
 export default function Hero() {
+  const { t } = useLanguage()
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background */}
@@ -97,7 +100,7 @@ export default function Hero() {
           >
             <Sparkles className="w-4 h-4 text-amber-500 dark:text-amber-400" />
             <span className="text-sm font-semibold text-amber-600 dark:text-amber-300">
-              Available for opportunities
+              {t('hero.badge')}
             </span>
           </motion.div>
 
@@ -109,10 +112,10 @@ export default function Hero() {
             className="mt-6"
           >
             <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300">
-              AI/ML/Gen-AI Developer
+              {t('hero.title')}
             </h2>
             <p className="mt-2 text-lg text-gray-500 dark:text-gray-400">
-              Generative AI Engineer • LLM Specialist • Full Stack Developer
+              {t('hero.subtitle')}
             </p>
           </motion.div>
 
@@ -123,9 +126,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-8 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
           >
-            Building intelligent systems powered by LangChain, Hugging Face, and RAG. 
-            Passionate about applying cutting-edge AI tools to solve real-world problems 
-            efficiently and at scale.
+            {t('hero.description')}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -141,7 +142,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="group relative px-8 py-4 bg-gradient-to-r from-amber-500 to-yellow-500 text-black font-semibold rounded-2xl shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 transition-shadow overflow-hidden"
             >
-              <span className="relative z-10">View My Work</span>
+              <span className="relative z-10">{t('hero.cta.work')}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity" />
             </motion.a>
             <motion.a
@@ -150,7 +151,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-white dark:bg-[#1a1a1a] text-gray-900 dark:text-white font-semibold rounded-2xl border-2 border-gray-200 dark:border-gray-700 hover:border-amber-400 dark:hover:border-amber-500 transition-colors"
             >
-              Get in Touch
+              {t('hero.cta.contact')}
             </motion.a>
           </motion.div>
 
@@ -196,7 +197,7 @@ export default function Hero() {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="flex flex-col items-center gap-2 text-gray-400 hover:text-amber-500 transition-colors"
           >
-            <span className="text-sm font-medium">Scroll Down</span>
+            <span className="text-sm font-medium">{t('hero.scroll')}</span>
             <ArrowDown size={20} />
           </motion.a>
         </motion.div>

@@ -6,6 +6,7 @@ import { useRef } from 'react'
 import { ArrowUpRight, ExternalLink, ShoppingCart, Sparkles, Bot, Gamepad2, Globe, CheckCircle } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Link from 'next/link'
+import { useLanguage } from '@/context/LanguageProvider'
 
 type Project = {
   id: string
@@ -23,6 +24,19 @@ type Project = {
 }
 
 const projects: Project[] = [
+  {
+    id: "maqder",
+    title: "Maqder ERP",
+    description: "A complete enterprise resource planning (ERP) solution built for Saudi Arabia. Streamlines business operations including HR, finance, inventory, sales, and more with full Arabic support.",
+    link: "https://maqder.com",
+    icon: Globe,
+    stats: "Full ERP",
+    gradient: "from-emerald-500 to-teal-500",
+    bgGradient: "from-emerald-600 via-teal-600 to-emerald-700",
+    features: ["HR Management", "Finance & Accounting", "Inventory Control"],
+    tech: ["React", "Node.js", "MongoDB", "REST API"],
+    allowsIframe: true,
+  },
   {
     id: "ai-smartbot",
     title: "AI Smartbot",
@@ -81,6 +95,7 @@ const projects: Project[] = [
 export default function Projects() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { t } = useLanguage()
 
   return (
     <section id="projects" className="relative py-24 overflow-hidden">
@@ -105,13 +120,16 @@ export default function Projects() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border border-amber-500/20 mb-6"
           >
             <Sparkles className="w-4 h-4 text-amber-500" />
-            <span className="text-sm font-medium text-amber-600 dark:text-amber-400">Featured Work</span>
+            <span className="text-sm font-medium text-amber-600 dark:text-amber-400">{t('projects.badge')}</span>
           </motion.div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-            My <span className="bg-gradient-to-r from-amber-500 to-yellow-400 bg-clip-text text-transparent">Projects</span>
+            {t('projects.title').split(' ')[0]}{' '}
+            <span className="bg-gradient-to-r from-amber-500 to-yellow-400 bg-clip-text text-transparent">
+              {t('projects.title').split(' ').slice(1).join(' ') || t('projects.title')}
+            </span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-            Real-world applications powering businesses globally
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
@@ -212,13 +230,13 @@ export default function Projects() {
                           className="flex items-center gap-2 px-6 py-3 bg-white rounded-xl text-sm font-semibold text-gray-900 hover:bg-amber-400 transition-colors"
                         >
                           <ExternalLink size={16} />
-                          Visit Live Site
+                          {t('projects.visit')}
                         </a>
                         <Link
                           href={`/projects/${project.id}`}
                           className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-xl text-sm font-semibold text-black hover:shadow-lg transition-shadow"
                         >
-                          View Details
+                          {t('projects.details')}
                           <ArrowUpRight size={16} />
                         </Link>
                       </div>
@@ -244,7 +262,7 @@ export default function Projects() {
 
                     {/* Features */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">Key Features</h4>
+                      <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">{t('projects.features')}</h4>
                       <div className="flex flex-wrap gap-2">
                         {project.features.map((feature) => (
                           <span key={feature} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/10 text-amber-700 dark:text-amber-400 rounded-lg text-sm font-medium">
@@ -257,11 +275,11 @@ export default function Projects() {
 
                     {/* Tech Stack */}
                     <div>
-                      <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">Tech Stack</h4>
+                      <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">{t('projects.tech')}</h4>
                       <div className="flex flex-wrap gap-2">
-                        {project.tech.map((t) => (
-                          <span key={t} className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium">
-                            {t}
+                        {project.tech.map((techItem) => (
+                          <span key={techItem} className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium">
+                            {techItem}
                           </span>
                         ))}
                       </div>
@@ -290,7 +308,7 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-amber-500 hover:text-black font-medium transition-all duration-300"
           >
-            View more on GitHub
+            {t('projects.github')}
             <ArrowUpRight size={18} />
           </a>
         </motion.div>

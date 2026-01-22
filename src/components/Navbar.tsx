@@ -5,21 +5,23 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
+import { useLanguage } from '@/context/LanguageProvider'
 
 const navItems = [
-  { name: 'Home', href: '/#home' },
-  { name: 'About', href: '/#about' },
-  { name: 'Skills', href: '/#skills' },
-  { name: 'Projects', href: '/#projects' },
-  { name: 'Contact', href: '/#contact' },
+  { key: 'nav.home', href: '/#home' },
+  { key: 'nav.about', href: '/#about' },
+  { key: 'nav.skills', href: '/#skills' },
+  { key: 'nav.projects', href: '/#projects' },
+  { key: 'nav.contact', href: '/#contact' },
 ]
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [activeItem, setActiveItem] = useState('Home')
+  const [activeItem, setActiveItem] = useState('nav.home')
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const { toggleLocale, t } = useLanguage()
 
   useEffect(() => {
     setMounted(true)
@@ -68,22 +70,22 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-8">
               {navItems.map((item, index) => (
                 <motion.a
-                  key={item.name}
+                  key={item.key}
                   href={item.href}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  onClick={() => setActiveItem(item.name)}
+                  onClick={() => setActiveItem(item.key)}
                   className="relative group"
                 >
                   <span className={`text-sm font-medium transition-colors ${
-                    activeItem === item.name 
+                    activeItem === item.key 
                       ? 'text-amber-500 dark:text-amber-400' 
                       : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                   }`}>
-                    {item.name}
+                    {t(item.key)}
                   </span>
-                  {activeItem === item.name && (
+                  {activeItem === item.key && (
                     <motion.div
                       layoutId="navIndicator"
                       className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-amber-400 to-yellow-300"
@@ -97,6 +99,17 @@ export default function Navbar() {
 
             {/* Right Actions */}
             <div className="flex items-center gap-4">
+              {/* Language Toggle */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={toggleLocale}
+                className="px-3 py-1.5 rounded-full border border-gray-200 dark:border-gray-800 text-xs font-semibold text-gray-700 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400 hover:border-amber-500/40 transition-colors"
+                aria-label="Toggle language"
+              >
+                {t('nav.language')}
+              </motion.button>
+
               {/* Theme Toggle */}
               <motion.button
                 whileHover={{ scale: 1.1 }}
@@ -115,7 +128,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.98 }}
                 className="hidden md:block px-5 py-2 text-sm font-semibold text-black bg-gradient-to-r from-amber-400 to-yellow-300 rounded-full hover:shadow-lg hover:shadow-amber-500/20 transition-shadow"
               >
-                Let's Talk
+                {t('nav.lets_talk')}
               </motion.a>
 
               {/* Mobile Menu */}
@@ -144,20 +157,20 @@ export default function Navbar() {
             <div className="px-6 py-4 space-y-1">
               {navItems.map((item, index) => (
                 <motion.a
-                  key={item.name}
+                  key={item.key}
                   href={item.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   onClick={() => {
                     setIsMobileMenuOpen(false)
-                    setActiveItem(item.name)
+                    setActiveItem(item.key)
                   }}
                   className={`block py-3 text-base font-medium transition-colors ${
-                    activeItem === item.name ? 'text-amber-500 dark:text-amber-400' : 'text-gray-600 dark:text-gray-400'
+                    activeItem === item.key ? 'text-amber-500 dark:text-amber-400' : 'text-gray-600 dark:text-gray-400'
                   }`}
                 >
-                  {item.name}
+                  {t(item.key)}
                 </motion.a>
               ))}
               <motion.a
@@ -168,7 +181,7 @@ export default function Navbar() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block mt-4 py-3 text-center text-sm font-semibold text-black bg-gradient-to-r from-amber-400 to-yellow-300 rounded-full"
               >
-                Let's Talk
+                {t('nav.lets_talk')}
               </motion.a>
             </div>
           </motion.div>

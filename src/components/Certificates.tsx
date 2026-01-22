@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Award, ExternalLink, Sparkles } from 'lucide-react'
 import Image from 'next/image'
+import { useLanguage } from '@/context/LanguageProvider'
 
 const certificates = [
   {
@@ -28,6 +29,8 @@ const certificates = [
 ]
 
 export default function Certificates() {
+  const { t } = useLanguage()
+
   return (
     <section id="certificates" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-amber-500/[0.02] to-transparent" />
@@ -49,18 +52,18 @@ export default function Certificates() {
           >
             <Sparkles className="w-4 h-4 text-amber-500" />
             <span className="text-sm font-medium text-amber-600 dark:text-amber-400">
-              Verified Achievements
+              {t('cert.badge')}
             </span>
           </motion.div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            My{' '}
+            {t('cert.title').split(' ')[0]}{' '}
             <span className="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent">
-              Certificates
+              {t('cert.title').split(' ').slice(1).join(' ')}
             </span>
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Professional certifications that validate my expertise and commitment to continuous learning
+            {t('cert.subtitle')}
           </p>
         </motion.div>
 
@@ -106,12 +109,12 @@ export default function Certificates() {
                     {cert.title}
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                    Instructor: <span className="text-gray-700 dark:text-gray-300">{cert.instructor}</span>
+                    {t('cert.instructor')}: <span className="text-gray-700 dark:text-gray-300">{cert.instructor}</span>
                   </p>
                   <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
                     <span>{cert.date}</span>
                     <span className="w-1 h-1 rounded-full bg-gray-400" />
-                    <span>{cert.hours} hours</span>
+                    <span>{cert.hours} {t('cert.hours')}</span>
                   </div>
                   
                   {/* Verify Button */}
@@ -121,7 +124,7 @@ export default function Certificates() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 text-sm font-medium hover:from-amber-500/20 hover:to-yellow-500/20 transition-all duration-300 group/btn"
                   >
-                    <span>Verify Credential</span>
+                    <span>{t('cert.verify')}</span>
                     <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                   </a>
                 </div>

@@ -348,20 +348,19 @@ export default function AISmartbotProject() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <Link
-              href="/#projects"
-              className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+              href="/projects/maqder"
+              className="group flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
             >
-              <ArrowLeft size={20} />
-              Back to All Projects
+              <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
+              <span>Previous Project</span>
             </Link>
-            <div className="flex gap-4">
-              <Link
-                href="/projects/buysial"
-                className="text-amber-600 dark:text-amber-400 hover:underline font-medium"
-              >
-                Next: BuySial →
-              </Link>
-            </div>
+            <Link
+              href="/projects/old-arcade"
+              className="group flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors"
+            >
+              <span>Next Project</span>
+              <ArrowLeft size={20} className="rotate-180 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>

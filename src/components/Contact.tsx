@@ -4,8 +4,10 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Loader2, CheckCircle, ArrowUpRight, Sparkles, MessageCircle } from 'lucide-react'
+import { useLanguage } from '@/context/LanguageProvider'
 
 export default function Contact() {
+  const { t } = useLanguage()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -96,13 +98,13 @@ export default function Contact() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border border-amber-500/20 mb-6"
           >
             <Sparkles className="w-4 h-4 text-amber-500" />
-            <span className="text-sm font-medium text-amber-600 dark:text-amber-400">Let's Create Something Amazing</span>
+            <span className="text-sm font-medium text-amber-600 dark:text-amber-400">{t('contact.badge')}</span>
           </motion.div>
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-            Get in <span className="bg-gradient-to-r from-amber-500 to-yellow-400 bg-clip-text text-transparent">Touch</span>
+            {t('contact.title').split(' ')[0]} <span className="bg-gradient-to-r from-amber-500 to-yellow-400 bg-clip-text text-transparent">{t('contact.title').split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-            Ready to bring your ideas to life? Let's discuss how we can work together.
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 

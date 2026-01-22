@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Calendar, MapPin, Award } from 'lucide-react'
 import Image from 'next/image'
+import { useLanguage } from '@/context/LanguageProvider'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -14,6 +15,7 @@ const fadeInUp = {
 export default function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { t } = useLanguage()
 
   const courses = [
     "Machine Learning",
@@ -42,13 +44,13 @@ export default function About() {
           className="text-center mb-10 sm:mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-amber-100 dark:bg-amber-900/20 text-amber-700 dark:text-amber-300 text-sm font-medium mb-4">
-            About Me
+            {t('about.badge')}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
-            Crafting AI Solutions
+            {t('about.title')}
           </h2>
           <p className="mt-4 text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-2">
-            Transforming ideas into intelligent applications
+            {t('about.subtitle')}
           </p>
         </motion.div>
 
@@ -63,22 +65,22 @@ export default function About() {
           >
             <div className="w-full">
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-4 whitespace-normal">
-                I'm a <span className="text-amber-700 dark:text-amber-400 font-semibold">Generative AI Engineer</span> with hands-on experience building LLM-powered applications using LangChain, Hugging Face, and RAG.
+                {t('about.p1')}
               </p>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-4 whitespace-normal">
-                Skilled in developing intelligent systems for text, image, and video generation. Passionate about applying AI tools to solve real-world problems.
+                {t('about.p2')}
               </p>
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed whitespace-normal">
-                Beyond AI, I have extensive experience in full-stack development with the MERN stack.
+                {t('about.p3')}
               </p>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-2 sm:gap-6 pt-6 sm:pt-8">
               {[
-                { value: "3+", label: "Projects Deployed" },
-                { value: "13", label: "Countries Served" },
-                { value: "2025", label: "Graduation Year" },
+                { value: "3+", label: t('about.stat.projects') },
+                { value: "13", label: t('about.stat.countries') },
+                { value: "2025", label: t('about.stat.grad') },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -121,7 +123,7 @@ export default function About() {
                   </div>
                   <div>
                     <h3 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">
-                      Bachelor in Artificial Intelligence
+                      {t('about.education.degree')}
                     </h3>
                     <a 
                       href="https://tuf.edu.pk" 
@@ -129,7 +131,7 @@ export default function About() {
                       rel="noopener noreferrer"
                       className="text-sm sm:text-base text-amber-700 dark:text-amber-400 font-medium hover:underline hover:text-amber-600 dark:hover:text-amber-300 transition-colors"
                     >
-                      The University of Faisalabad
+                      {t('about.education.university')}
                     </a>
                   </div>
                 </div>
@@ -141,14 +143,14 @@ export default function About() {
                   </div>
                   <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
                     <MapPin size={16} />
-                    <span>Faisalabad, Pakistan</span>
+                    <span>{t('about.education.location')}</span>
                   </div>
                 </div>
 
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
                     <Award size={18} className="text-amber-500" />
-                    <span className="font-medium">Relevant Coursework</span>
+                    <span className="font-medium">{t('about.education.coursework')}</span>
                   </div>
                   <div className="overflow-hidden">
                     <div className="flex animate-marquee whitespace-nowrap">

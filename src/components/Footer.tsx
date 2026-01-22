@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion'
 import { Heart, Github, Linkedin, Mail } from 'lucide-react'
 import Link from 'next/link'
+import { useLanguage } from '@/context/LanguageProvider'
 
 export default function Footer() {
+  const { t } = useLanguage()
   const currentYear = new Date().getFullYear()
 
   const navLinks = [
@@ -32,10 +34,10 @@ export default function Footer() {
                 <span className="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent">HS</span>
               </span>
               <span className="h-6 w-px bg-gradient-to-b from-transparent via-amber-500/50 to-transparent" />
-              <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">Portfolio</span>
+              <span className="text-xs font-medium text-gray-400 uppercase tracking-widest">{t('footer.portfolio')}</span>
             </Link>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              AI/ML/Gen-AI Developer building intelligent solutions for the future.
+              {t('footer.tagline')}
             </p>
           </div>
 
@@ -74,11 +76,11 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
-              © {currentYear} Hassan Sarwar. Made with{' '}
-              <Heart size={14} className="text-red-500 fill-red-500" /> and Next.js
+              © {currentYear} Hassan Sarwar. {t('footer.made_with')}{' '}
+              <Heart size={14} className="text-red-500 fill-red-500" /> {t('footer.and')} Next.js
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-500">
-              Designed & Developed by Hassan
+              {t('footer.designed_by')}
             </p>
           </div>
         </div>
