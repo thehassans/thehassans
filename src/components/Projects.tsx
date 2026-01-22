@@ -35,7 +35,7 @@ const projects: Project[] = [
     bgGradient: "from-emerald-600 via-teal-600 to-emerald-700",
     features: ["HR Management", "Finance & Accounting", "Inventory Control"],
     tech: ["React", "Node.js", "MongoDB", "REST API"],
-    allowsIframe: true,
+    allowsIframe: false,
   },
   {
     id: "ai-smartbot",
@@ -88,7 +88,7 @@ const projects: Project[] = [
     bgGradient: "from-fuchsia-600 via-purple-600 to-fuchsia-700",
     features: ["Modern UI", "Responsive design", "Fast performance"],
     tech: ["Next.js", "Tailwind", "Framer Motion", "Vercel"],
-    allowsIframe: true,
+    allowsIframe: false,
   }
 ]
 
@@ -216,6 +216,16 @@ export default function Projects() {
                             <project.icon size={64} className="mb-4 opacity-90" strokeWidth={1.5} />
                             <span className="text-2xl font-bold opacity-90">{project.title}</span>
                             <span className="text-sm opacity-70 mt-1">{project.link.replace('https://', '')}</span>
+                            <a
+                              href={project.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/25 text-white text-sm font-semibold backdrop-blur transition-colors"
+                            >
+                              {t('projects.visit')}
+                              <ArrowUpRight size={16} />
+                            </a>
                           </div>
                         </div>
                       </div>

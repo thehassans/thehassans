@@ -107,18 +107,23 @@ export default function KhayyatosProject() {
                   </div>
                 </div>
                 <div className="w-full h-64 sm:h-80 lg:h-[420px] overflow-hidden relative">
-                  <iframe
-                    src="https://khayyatos.com"
-                    className="absolute top-0 left-0 bg-white"
-                    style={{
-                      transform: 'scale(0.5)',
-                      transformOrigin: 'top left',
-                      width: '200%',
-                      height: '200%',
-                    }}
-                    title="Khayyatos Live Preview"
-                    loading="lazy"
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600 via-purple-600 to-fuchsia-700">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px]" />
+                  </div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                    <Globe size={80} className="mb-4 opacity-90" strokeWidth={1.5} />
+                    <span className="text-3xl font-bold opacity-90">Khayyatos</span>
+                    <span className="text-lg opacity-70 mt-2">khayyatos.com</span>
+                    <a
+                      href="https://khayyatos.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/25 text-white text-sm font-semibold backdrop-blur transition-colors"
+                    >
+                      Open Live Preview
+                      <ExternalLink size={16} />
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
