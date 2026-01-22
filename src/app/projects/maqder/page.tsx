@@ -121,17 +121,11 @@ export default function MaqderProject() {
                     </div>
                   </div>
                 </div>
-                <div className="relative aspect-video overflow-hidden">
-                  <iframe
-                    src="https://maqder.com"
-                    className="absolute top-0 left-0 bg-white"
-                    style={{
-                      transform: 'scale(0.5)',
-                      transformOrigin: 'top left',
-                      width: '200%',
-                      height: '200%',
-                    }}
-                    title="Maqder ERP Live Preview"
+                <div className="relative aspect-video overflow-hidden bg-gray-900">
+                  <img
+                    src="https://image.thum.io/get/width/800/crop/600/https://maqder.com"
+                    alt="Maqder ERP Preview"
+                    className="w-full h-full object-cover object-top"
                     loading="lazy"
                   />
                 </div>

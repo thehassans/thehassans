@@ -106,12 +106,14 @@ export default function KhayyatosProject() {
                     </div>
                   </div>
                 </div>
-                <iframe
-                  src="https://khayyatos.com"
-                  className="w-full h-64 sm:h-80 lg:h-[420px]"
-                  title="Khayyatos Live Preview"
-                  loading="lazy"
-                />
+                <div className="w-full h-64 sm:h-80 lg:h-[420px] overflow-hidden">
+                  <img
+                    src="https://image.thum.io/get/width/800/crop/600/https://khayyatos.com"
+                    alt="Khayyatos Preview"
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </motion.div>
           </div>
